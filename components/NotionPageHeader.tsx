@@ -17,7 +17,6 @@ import styles from './styles.module.css';
 import Logo from 'public/Logo.png';
 import LogoDark from 'public/LogoDark.png';
 
-
 const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
@@ -52,9 +51,11 @@ export const NotionPageHeader: React.FC<{
       <div className="flex justify-between items-center max-w-6xl w-full">
         <Link href="/">
           <div className="ml-3 cursor-pointer ">
-            {isDarkMode ? <Image width="205px" height="22px" src={LogoDark} />
-: <Image width="205px" height="22px" src={Logo} />
-}
+            {isDarkMode ? (
+              <Image width="205px" height="22px" src={LogoDark} />
+            ) : (
+              <Image width="205px" height="22px" src={Logo} />
+            )}
           </div>
         </Link>
         <nav>

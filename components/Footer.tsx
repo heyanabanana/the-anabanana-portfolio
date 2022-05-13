@@ -8,7 +8,6 @@ import * as config from 'lib/config'
 
 import styles from './styles.module.css'
 
-// TODO: merge the data and icons from PageSocial with the social links in Footer
 
 export const FooterImpl: React.FC = () => {
 
