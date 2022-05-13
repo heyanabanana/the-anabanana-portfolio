@@ -1,4 +1,4 @@
-import { siteConfig } from './lib/site-config'
+import { siteConfig } from './lib/site-config';
 
 export default siteConfig({
   // the site's root Notion page (required)
@@ -53,22 +53,22 @@ export default siteConfig({
     {
       title: 'Blog',
       pageId: '223c4ba2ad2b4bf2ba921e7c5afbe2a1',
-      show: true
+      show: true,
     },
     {
       title: 'Proyectos',
-      pageId: 'd990f049f4e044fcb3852b286530b193',
-      show: true
+      pageId: '26df1ec26e0e4c589730059c092442d4',
+      show: true,
     },
     {
       title: 'Sobre mi',
       pageId: '6b902640ba844eb388ce1048ced46ff4',
-      show: true
+      show: true,
     },
     {
       title: 'Contacto',
       pageId: '707940381d3f426bb73ab46a92b63fbd',
-      show: true
-    }
-  ]
-})
+      show: true,
+    },
+  ],
+});

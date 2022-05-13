@@ -1,4 +1,7 @@
 import * as React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+
 import cs from 'classnames';
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline';
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp';
@@ -8,9 +11,12 @@ import * as types from 'notion-types';
 import { useDarkMode } from 'lib/use-dark-mode';
 import { navigationStyle, navigationLinks, isSearchEnabled } from 'lib/config';
 
-import styles from './styles.module.css';
-import Link from 'next/link';
 import { MobileNav } from 'components/MobileNav';
+
+import styles from './styles.module.css';
+import Logo from 'public/Logo.png';
+import LogoDark from 'public/LogoDark.png';
+
 
 const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false);
@@ -35,6 +41,7 @@ export const NotionPageHeader: React.FC<{
   block: types.CollectionViewPageBlock | types.PageBlock;
 }> = ({ block }) => {
   const { components, mapPageUrl } = useNotionContext();
+  const { isDarkMode } = useDarkMode();
 
   if (navigationStyle === 'default') {
     return <Header block={block} />;
@@ -44,7 +51,11 @@ export const NotionPageHeader: React.FC<{
     <header className="notion-header flex items-center w-full justify-center">
       <div className="flex justify-between items-center max-w-6xl w-full">
         <Link href="/">
-          <div className="ml-3 cursor-pointer">AQUI LOGO</div>
+          <div className="ml-3 cursor-pointer ">
+            {isDarkMode ? <Image width="205px" height="22px" src={LogoDark} />
+: <Image width="205px" height="22px" src={Logo} />
+}
+          </div>
         </Link>
         <nav>
           <div className="flex items-center text-base leading-5 px-6">
