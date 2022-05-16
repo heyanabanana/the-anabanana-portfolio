@@ -47,7 +47,7 @@ export const NotionPageHeader: React.FC<{
   }
 
   return (
-    <header className="notion-header flex items-center w-full justify-center">
+    <header className="notion-header flex items-center w-full justify-center pt-8 font-medium">
       <div className="flex justify-between items-center max-w-6xl w-full">
         <Link href="/">
           <div className="ml-3 cursor-pointer ">

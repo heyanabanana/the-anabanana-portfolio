@@ -19,6 +19,7 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif !important;
   font-family: var(--notion-font);
   overflow-x: hidden;
+  font-size: 18px !important;
 }
 
 .static-tweet blockquote {
