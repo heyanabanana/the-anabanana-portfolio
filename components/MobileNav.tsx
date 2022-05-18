@@ -22,15 +22,15 @@ export const MobileNav = () => {
   }
 
   const HamIcon = ({ isOpen }) => {
-    const hamLine = `h-1 w-5 rounded-full transition ease transform duration-300 ${
+    const hamLine = `h-1 w-4 rounded-full transition ease transform duration-300 ${
       isOpen
-        ? '  bg-amber-400 dark:bg-amber-300'
+        ? '  bg-rose-400 dark:bg-rose-300'
         : ' bg-rose-400 dark:bg-rose-300'
     }`
 
     return (
       <button
-        className={`flex flex-col h-8 w-8 justify-center  items-center  ${
+        className={`flex flex-col h-8 w-8 justify-center items-center  ${
           isOpen ? '' : 'gap-0.5'
         }
         `}
@@ -50,7 +50,7 @@ export const MobileNav = () => {
 
   return (
     <div className='md:hidden'>
-      <Menu as='div' className='relative  text-left  '>
+      <Menu as='div' className='relative text-left'>
         {({ open }) => (
           <>
             <Menu.Button aria-label='Toggle Menu'>
@@ -83,7 +83,7 @@ export const MobileNav = () => {
                                 key={index}
                                 className={`${
                                   active
-                                    ? 'bg-violet-500 text-white'
+                                    ? 'bg-rose-300 text-white'
                                     : 'text-gray-900'
                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                               >

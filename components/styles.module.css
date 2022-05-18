@@ -57,11 +57,6 @@
   padding-bottom: 20px;
 }
 
-.copyright {
-  font-size: 90%;
-  padding: 0.5em;
-}
-
 .settings,
 .social {
   user-select: none;
@@ -94,7 +89,6 @@
 .twitter:hover {
   color: var(--notion-teal);
 }
-
 
 .mail:hover {
   color: var(--notion-pink);

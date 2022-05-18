@@ -22,7 +22,6 @@ export default siteConfig({
   linkedin: 'anafernandezvaldes',
   mail: 'hola@heyanabanana.es',
 
-
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
   defaultPageIcon: null,
@@ -67,6 +66,5 @@ export default siteConfig({
       pageId: '6b902640ba844eb388ce1048ced46ff4',
       show: true,
     },
-
   ],
 });

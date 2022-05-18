@@ -273,16 +273,17 @@
 .notion-collection {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
+  width: 100% !important;
 }
 .notion-asset-caption {
   text-align: center;
 }
 
-.notion-property .notion-property-checkbox {
+.notion-property-checkbox {
   display: none !important;
 }
 
-.notion-property-checkbox {
+.notion-property-select {
   display: none !important;
 }
 
@@ -304,10 +305,11 @@
   border: none !important;
   display: flex;
   justify-content: space-between;
+  width: 100% !important;
 }
 .notion-collection-row-body {
-  flex-direction: row !important;
-  justify-content: space-between;
+  /* flex-direction: row !important; */
+  align-items: end;
   width: 100% !important;
 }
 
@@ -381,38 +383,52 @@
 .notion-collection-header-title {
   display: none !important;
 }
-.notion-table {
-  display: flex;
-}
-.notion-table-view {
-  display: block !important;
-  padding-left: 82px !important;
-  padding-right: 82px !important;
-}
-
-.notion-table-header {
-  display: none !important;
-  justify-content: center;
-}
 
 .notion-list-body {
   border: none !important;
   gap: 8px;
+  padding: 6px;
+  height: 100% !important;
+
+  width: 100% !important;
+  overflow: hidden;
 }
 
-.notion-table-cell {
+.notion-list-item {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: start;
+  flex-direction: column;
+
   border: none !important;
-  width: fit-content !important;
-  padding: 0 !important;
-  min-height: auto !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .notion-list-item-body {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.notion-list-item-body {
+  width: 100%;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .notion-list-item-title {
   font-size: 18px;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 500px) {
+  .notion-list-item-title {
+    max-width: 300px;
+  }
 }
 
 .notion-table-cell-created_time {
@@ -434,6 +450,7 @@
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   color: var(--color-text-default);
+  background: none;
 }
 
 .notion-callout:hover {

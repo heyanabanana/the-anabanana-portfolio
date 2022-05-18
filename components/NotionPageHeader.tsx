@@ -5,7 +5,7 @@ import Image from 'next/image';
 import cs from 'classnames';
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline';
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp';
-import { Header, Breadcrumbs, Search, useNotionContext } from 'react-notion-x';
+import { Header, useNotionContext } from 'react-notion-x';
 import * as types from 'notion-types';
 
 import { useDarkMode } from 'lib/use-dark-mode';
@@ -13,7 +13,6 @@ import { navigationStyle, navigationLinks, isSearchEnabled } from 'lib/config';
 
 import { MobileNav } from 'components/MobileNav';
 
-import styles from './styles.module.css';
 import Logo from 'public/Logo.png';
 import LogoDark from 'public/LogoDark.png';
 
@@ -30,9 +29,9 @@ const ToggleThemeButton = () => {
   }, [toggleDarkMode]);
 
   return (
-    <div className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)} onClick={onToggleTheme}>
-      {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
-    </div>
+    <button onClick={onToggleTheme}>
+      {hasMounted && isDarkMode ? <IoMoonSharp size="1.3rem" /> : <IoSunnyOutline size="1.3rem" />}
+    </button>
   );
 };
 
@@ -59,8 +58,8 @@ export const NotionPageHeader: React.FC<{
           </div>
         </Link>
         <nav>
-          <div className="flex items-center text-base leading-5 px-6">
-            <div className="hidden md:block">
+          <div className="flex items-center text-base leading-5 px-6  gap-6">
+            <div className="hidden md:flex w-full  gap-6">
               {navigationLinks
                 ?.filter((n: any) => n.show)
                 .map((link, index) => {
@@ -70,17 +69,13 @@ export const NotionPageHeader: React.FC<{
 
                   if (link.pageId) {
                     return (
-                      <components.PageLink
-                        href={mapPageUrl(link.pageId)}
-                        key={index}
-                        className={cs(styles.navLink, 'breadcrumb', 'button')}
-                      >
+                      <components.PageLink href={mapPageUrl(link.pageId)} key={index}>
                         {link.title}
                       </components.PageLink>
                     );
                   } else {
                     return (
-                      <components.Link href={link.url} key={index} className={cs(styles.navLink, 'breadcrumb', 'button')}>
+                      <components.Link href={link.url} key={index}>
                         {link.title}
                       </components.Link>
                     );
@@ -90,7 +85,6 @@ export const NotionPageHeader: React.FC<{
             </div>
             <ToggleThemeButton />
             <MobileNav />
-            {isSearchEnabled && <Search block={block} title={null} />}
           </div>
         </nav>
       </div>
