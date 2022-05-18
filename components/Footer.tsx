@@ -1,43 +1,38 @@
-import * as React from 'react'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
+import * as React from 'react';
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
+import { FaEnvelope } from '@react-icons/all-files/fa/FaEnvelope';
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
+import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
 
-import * as config from 'lib/config'
+import * as config from 'lib/config';
 
-import styles from './styles.module.css'
-
+import styles from './styles.module.css';
 
 export const FooterImpl: React.FC = () => {
-
-
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2022 {config.author}</div>
-
       <div className={styles.social}>
         {config.twitter && (
           <a
             className={styles.twitter}
             href={`https://twitter.com/${config.twitter}`}
             title={`Twitter @${config.twitter}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaTwitter />
           </a>
         )}
 
-        {config.zhihu && (
+        {config.mail && (
           <a
-            className={styles.zhihu}
-            href={`https://zhihu.com/people/${config.zhihu}`}
-            title={`Zhihu @${config.zhihu}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            className={styles.mail}
+            href={`mailto:{config.mail}`}
+            title={`Email ${config.mail}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <FaZhihu />
+            <FaEnvelope />
           </a>
         )}
 
@@ -46,8 +41,8 @@ export const FooterImpl: React.FC = () => {
             className={styles.github}
             href={`https://github.com/${config.github}`}
             title={`GitHub @${config.github}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaGithub />
           </a>
@@ -58,15 +53,15 @@ export const FooterImpl: React.FC = () => {
             className={styles.linkedin}
             href={`https://www.linkedin.com/in/${config.linkedin}`}
             title={`LinkedIn ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaLinkedin />
           </a>
         )}
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export const Footer = React.memo(FooterImpl)
+export const Footer = React.memo(FooterImpl);

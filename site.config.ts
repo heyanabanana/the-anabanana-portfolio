@@ -10,16 +10,18 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Ana Fernández',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
+  domain: 'heyanabanana.es',
   author: 'Ana Fernández',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Portfolio & blog de Ana Fernández',
 
   // social usernames (optional)
   twitter: 'hey_anabanana',
   github: 'heyanabanana',
   linkedin: 'anafernandezvaldes',
+  mail: 'hola@heyanabanana.es',
+
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
@@ -65,10 +67,6 @@ export default siteConfig({
       pageId: '6b902640ba844eb388ce1048ced46ff4',
       show: true,
     },
-    {
-      title: 'Contacto',
-      pageId: '707940381d3f426bb73ab46a92b63fbd',
-      show: true,
-    },
+
   ],
 });
