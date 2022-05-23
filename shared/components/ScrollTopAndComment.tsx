@@ -1,6 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import { BiCheck } from 'react-icons/bi'
+import { ShareOnTwitter } from '@/shared/components/ui/lib/ShareOnTwitter'
+import { ShareOnLinkedin } from '@/shared/components/ui/lib/ShareOnLinkedin'
 
-const ScrollTopAndComment = () => {
+const ScrollTopAndComment = ({
+  type,
+  slug,
+  text,
+  author,
+  url,
+}: {
+  type?: 'blog' | 'project'
+  slug?: string
+  text?: string
+  author?: any
+  url?: string
+}) => {
   const [show, setShow] = useState<boolean>(false)
   const [isComplete, setIsComplete] = useState<boolean>(false)
 
@@ -45,40 +60,39 @@ const ScrollTopAndComment = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const handleScrollToComment = () => {
-    document?.getElementById('comment')?.scrollIntoView()
-  }
-
   return (
-    <div className={`fixed right-8 bottom-8 flex-col gap-3 ${show ? 'flex' : 'hidden'}`}>
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700">
+    <div className="fixed right-8 bottom-8 z-50 flex flex-col gap-3">
+      <ShareOnTwitter
+        size="icon"
+        type={type || 'blog'}
+        slug={slug || ''}
+        text="Acabo de leer esto de "
+        author={author || ''}
+        url={url || ''}
+      />
+      <ShareOnLinkedin type={type || 'blog'} slug={slug || ''} url={url || ''} size="icon" />
+      <div className={`relative h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700 ${
+          show ? 'flex' : 'hidden'
+        }`}>
         <div
-          className=" rounded-full bg-blue-600"
+          className="rounded-full bg-primary"
           style={{
-            width: Math.round((100 * scrollY) / maxScrollY)+ '%',
-            height: Math.round((100 * scrollY) / maxScrollY)+ '%',
+            width: Math.round((100 * scrollY) / maxScrollY) + '%',
+            height: Math.round((100 * scrollY) / maxScrollY) + '%',
           }}
-        ></div>
+        />
+        <BiCheck
+          className="absolute h-7 w-7"
+          style={{ opacity: scrollY >= maxScrollY ? '1' : '0', transition: 'opacity 0.3s' }}
+        />
       </div>
-      <button
-        aria-label="Scroll To Comment"
-        type="button"
-        onClick={handleScrollToComment}
-        className="rounded-full bg-gray-200 p-2 text-gray-500 transition-all hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600"
-      >
-        <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path
-            fillRule="evenodd"
-            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
       <button
         aria-label="Scroll To Top"
         type="button"
         onClick={handleScrollTop}
-        className="rounded-full bg-gray-200 p-2 text-gray-500 transition-all hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600"
+        className={`h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-500 transition-all hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600 ${
+          show ? 'flex' : 'hidden'
+        }`}
       >
         <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path
