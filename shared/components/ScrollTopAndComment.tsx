@@ -1,16 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { motion, useSpring, useTransform, useViewportScroll } from 'framer-motion'
 
 const ScrollTopAndComment = () => {
   const [show, setShow] = useState<boolean>(false)
   const [isComplete, setIsComplete] = useState<boolean>(false)
 
-  const scrollYProgress = window.scrollY
-
-  const pathLength = useSpring(window.scrollY, { stiffness: 400, damping: 90 })
+  const [scrollY, setScrollY] = useState(0)
+  const [maxScrollY, setMaxScrollY] = useState(0)
 
   useEffect(() => {
-    if (window.scrollY >= 100) setIsComplete(true)
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    // just trigger this so that the initial state
+    // is updated as soon as the component is mounted
+    // related: https://stackoverflow.com/a/63408216
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    setMaxScrollY(document.documentElement.scrollHeight - document.documentElement.clientHeight)
+  }, [])
+
+  useEffect(() => {
+    if (scrollY === maxScrollY) setIsComplete(true)
   }, [])
 
   useEffect(() => {
@@ -32,34 +50,16 @@ const ScrollTopAndComment = () => {
   }
 
   return (
-    <div
-      className={`fixed right-8 bottom-8 hidden flex-col gap-3 ${show ? 'md:flex' : 'md:hidden'}`}
-    >
-      <svg className="progress-icon" viewBox="0 0 60 60">
-        <motion.path
-          fill="none"
-          strokeWidth="5"
-          stroke="white"
-          strokeDasharray="0 1"
-          d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
+    <div className={`fixed right-8 bottom-8 flex-col gap-3 ${show ? 'flex' : 'hidden'}`}>
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700">
+        <div
+          className=" rounded-full bg-blue-600"
           style={{
-            pathLength,
-            rotate: 90,
-            translateX: 5,
-            translateY: 5,
-            scaleX: -1, // Reverse direction of line animation
+            width: Math.round((100 * scrollY) / maxScrollY)+ '%',
+            height: Math.round((100 * scrollY) / maxScrollY)+ '%',
           }}
-        />
-        <motion.path
-          fill="none"
-          strokeWidth="5"
-          stroke="white"
-          d="M14,26 L 22,33 L 35,16"
-          initial={false}
-          strokeDasharray="0 1"
-          animate={{ pathLength: isComplete ? 1 : 0 }}
-        />
-      </svg>
+        ></div>
+      </div>
       <button
         aria-label="Scroll To Comment"
         type="button"
