@@ -5,8 +5,9 @@ import { MDXLayoutRenderer } from '@/shared/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/shared/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
-import { PostFrontMatter } from 'types/PostFrontMatter'
-import { Toc } from 'types/Toc'
+import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
+import { Toc } from '@/shared/models/Toc'
+import { author } from '@/data/author'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 
@@ -75,7 +76,7 @@ export default function Blog({
           toc={toc}
           mdxSource={mdxSource}
           frontMatter={frontMatter}
-          authorDetails={authorDetails}
+          authorDetails={author}
           prev={prev}
           next={next}
         />

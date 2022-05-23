@@ -1,10 +1,10 @@
 import { PageSEO } from '@/shared/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/shared/lib/mdx'
-import ListLayout from '@/shared/components/ui/layouts/ListLayout'
 import { POSTS_PER_PAGE } from '../../apuntes'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { PostFrontMatter } from 'types/PostFrontMatter'
+import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
+import ProjectListLayout from '@/shared/components/ui/layouts/ProjectListLayout'
 
 export const getStaticPaths: GetStaticPaths<{ page: string }> = async () => {
   const totalPosts = await getAllFilesFrontMatter('blog')
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<{
   const {
     params: { page },
   } = context
-  const posts = await getAllFilesFrontMatter('blog')
+  const posts = await getAllFilesFrontMatter('projects')
   const pageNumber = parseInt(page as string)
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
@@ -55,11 +55,11 @@ export default function ProjectPage({
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <ListLayout
-        posts={posts}
+      <ProjectListLayout
+        projects={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
-        title="All Posts"
+        title="Todos los proyectos 🚀"
       />
     </>
   )

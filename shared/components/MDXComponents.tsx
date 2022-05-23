@@ -8,7 +8,7 @@ import Pre from './ui/lib/Pre'
 
 const Wrapper: React.ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
   const Layout = require(`../components/ui/layouts/${layout}`).default
-  return <Layout {...rest} />
+  return <Layout {...rest}/>
 }
 
 export const MDXComponents: ComponentMap = {

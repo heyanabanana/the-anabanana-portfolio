@@ -8,13 +8,7 @@ import { author } from '@/data/author'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 
 const About = () => {
-  const variants = {
-    hidden: { opacity: 0, transition: { duration: 0.6 } },
-    enter: { opacity: 1, transition: { duration: 0.6 } },
-    exit: { opacity: 0, transition: { duration: 0.6 } },
-  }
-
-  const [[page, direction], setPage] = useState([0, 0])
+  const [[page], setPage] = useState([0, 0])
 
   const tabs = [
     { title: 'Skills', body: <TabSkills /> },
@@ -59,7 +53,7 @@ const About = () => {
               </section>
               <div>
                 <AnimateSharedLayout>
-                  <div className="flex cursor-pointer items-center justify-between rounded-2xl bg-gray-100  px-4 py-2 text-sm">
+                  <div className="flex cursor-pointer items-center justify-between rounded-2xl bg-gray-100 px-4 py-2 text-sm dark:bg-gray-900">
                     {tabs.map(({ title }, i) => {
                       const isActive = i === page
                       return (
@@ -67,7 +61,7 @@ const About = () => {
                           key={i}
                           className={
                             isActive
-                              ? 'rounded-2xl bg-white px-4 py-2 font-semibold text-primary shadow-md'
+                              ? 'rounded-2xl bg-white px-4 py-2 font-semibold text-primary shadow-md dark:bg-black'
                               : ' px-4 py-2'
                           }
                           onClick={() => {
@@ -81,11 +75,10 @@ const About = () => {
                   </div>
                   <motion.div
                     key={page}
-                    variants={variants}
-                    initial="hidden"
-                    animate="enter"
-                    exit="exit"
-                    transition={{ type: 'linear' }}
+                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    exit={{ opacity: 0, y: -50 }}
+                    transition={{ duration: 0.5 }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     dragElastic={1}

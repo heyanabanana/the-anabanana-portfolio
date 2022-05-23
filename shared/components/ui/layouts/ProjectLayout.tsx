@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Link from '@/shared/components/ui/lib/Link'
 import PageTitle from '@/shared/components/ui/sections/PageTitle'
 import SectionContainer from '@/shared/components/ui/sections/SectionContainer'
@@ -8,14 +10,13 @@ import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/shared/components/comments'
 import ScrollTopAndComment from '@/shared/components/ScrollTopAndComment'
 import { ReactNode } from 'react'
-import { PostFrontMatter } from 'types/PostFrontMatter'
+import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
+import { ShareOnTwitter } from '@/shared/components/ui/lib/ShareOnTwitter'
+import { author } from '@/data/author'
+import { ShareOnLinkedin } from '@/shared/components/ui/lib/ShareOnLinkedin'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `${siteMetadata.siteUrl}/blog/${slug}`
-  )}`
+const editUrl = (fileName: any) => `${siteMetadata.siteRepo}/blob/master/data/proyectos/${fileName}`
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -32,14 +33,14 @@ interface Props {
   children: ReactNode
 }
 
-export default function ProjectLayout({ frontMatter, authorDetails, next, prev, children }: Props) {
+export default function ProjectLayout({ frontMatter, next, prev, children }: Props) {
   const { slug, fileName, date, title, tags } = frontMatter
 
   return (
     <SectionContainer>
       <BlogSEO
-        url={`${siteMetadata.siteUrl}/blog/${slug}`}
-        authorDetails={authorDetails}
+        url={`${siteMetadata.siteUrl}/proyectos/${slug}`}
+        authorDetails={author}
         {...frontMatter}
       />
       <ScrollTopAndComment />
@@ -62,64 +63,38 @@ export default function ProjectLayout({ frontMatter, authorDetails, next, prev, 
               </div>
             </div>
           </header>
-          <div
-            className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
-            style={{ gridTemplateRows: 'auto 1fr' }}
-          >
-            <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
-              <dt className="sr-only">Authors</dt>
-              <dd>
-                <ul className="flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
-                  {authorDetails.map((author) => (
-                    <li className="flex items-center space-x-2" key={author.name}>
-                      {author.avatar && (
-                        <Image
-                          src={author.avatar}
-                          width="38px"
-                          height="38px"
-                          alt="avatar"
-                          className="h-10 w-10 rounded-full"
-                        />
-                      )}
-                      <dl className="whitespace-nowrap text-sm font-medium leading-5">
-                        <dt className="sr-only">Name</dt>
-                        <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
-                        <dt className="sr-only">Twitter</dt>
-                        <dd>
-                          {author.twitter && (
-                            <Link
-                              href={author.twitter}
-                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                            >
-                              {author.twitter.replace('https://twitter.com/', '@')}
-                            </Link>
-                          )}
-                        </dd>
-                      </dl>
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </dl>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
-              <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <Link href={discussUrl(slug)} rel="nofollow">
-                  {'Discuss on Twitter'}
-                </Link>
-                {` • `}
-                <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
-              </div>
-              <Comments frontMatter={frontMatter} />
-            </div>
-            <footer>
-              <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
+          <div className="flex flex-col gap-6  pb-8  md:flex-row">
+            {/* AUTHOR COL */}
+            <section className="flex w-full flex-col items-center gap-4 pt-8 md:pt-11">
+              <span className="flex items-center gap-2">
+                {author.avatar && (
+                  <Image
+                    src={author.avatar}
+                    width="38px"
+                    height="38px"
+                    alt="avatar"
+                    className="h-10 w-10 rounded-full"
+                  />
+                )}
+                <h4 className="text-gray-900 dark:text-gray-100">{author.name}</h4>
+              </span>
+              <span>
+                <ShareOnTwitter
+                  type="project"
+                  slug={slug}
+                  text="Acabo de leer esto de "
+                  author={author.twitter.replace('https://twitter.com/', '@')}
+                  url={`${siteMetadata.siteUrl}/`}
+                />
+                <ShareOnLinkedin type="project" slug={slug} url={`${siteMetadata.siteUrl}/`} />
+              </span>
+              <div className="text-sm font-medium leading-5 ">
                 {tags && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                       Tags
                     </h2>
-                    <div className="flex flex-wrap">
+                    <div className="flex flex-wrap gap-px">
                       {tags.map((tag) => (
                         <Tag key={tag} text={tag} />
                       ))}
@@ -159,7 +134,16 @@ export default function ProjectLayout({ frontMatter, authorDetails, next, prev, 
                   &larr; Back to the blog
                 </Link>
               </div>
-            </footer>
+            </section>
+            {/* CONTENT COL */}
+
+            <section className="flex flex-col divide-y divide-gray-200 dark:divide-gray-700">
+              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
+              <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
+                <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
+              </div>
+              <Comments frontMatter={frontMatter} />
+            </section>
           </div>
         </div>
       </article>

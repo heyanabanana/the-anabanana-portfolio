@@ -1,8 +1,10 @@
+import React from 'react'
+
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
-import { PostFrontMatter } from 'types/PostFrontMatter'
+import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 
 interface CommonSEOProps {
   title: string
@@ -100,7 +102,7 @@ export const TagSEO = ({ title, description }: PageSEOProps) => {
 }
 
 interface BlogSeoProps extends PostFrontMatter {
-  authorDetails?: AuthorFrontMatter[]
+  authorDetails?: AuthorFrontMatter
   url: string
 }
 
@@ -130,19 +132,9 @@ export const BlogSEO = ({
     }
   })
 
-  let authorList
-  if (authorDetails) {
-    authorList = authorDetails.map((author) => {
-      return {
-        '@type': 'Person',
-        name: author.name,
-      }
-    })
-  } else {
-    authorList = {
-      '@type': 'Person',
-      name: siteMetadata.author,
-    }
+  let authorList = {
+    '@type': 'Person',
+    name: authorDetails.name,
   }
 
   const structuredData = {

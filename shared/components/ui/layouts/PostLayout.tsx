@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from '@/shared/components/ui/lib/Link'
 import PageTitle from '@/shared/components/ui/sections/PageTitle'
 import SectionContainer from '@/shared/components/ui/sections/SectionContainer'
@@ -6,10 +7,11 @@ import Image from '@/shared/components/ui/lib/Image'
 import Tag from '@/shared/components/ui/lib/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/shared/components/comments'
-import ScrollTopAndComment from '@/shared/components/ScrollTopAndComment'
+import  ScrollTopAndComment  from '@/shared/components/ScrollTopAndComment'
 import { ReactNode } from 'react'
-import { PostFrontMatter } from 'types/PostFrontMatter'
+import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
+import { author } from '@/data/author'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 const discussUrl = (slug) =>
@@ -39,7 +41,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
     <SectionContainer>
       <BlogSEO
         url={`${siteMetadata.siteUrl}/blog/${slug}`}
-        authorDetails={authorDetails}
+        authorDetails={author}
         {...frontMatter}
       />
       <ScrollTopAndComment />

@@ -4,6 +4,7 @@ import { ComponentProps, useState } from 'react'
 import Pagination from '@/shared/components/ui/sections/Pagination'
 import formatDate from '@/shared/lib/utils/formatDate'
 import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
+import { generateHSL } from '@/shared/lib/utils/color-generator'
 
 interface Props {
   projects: PostFrontMatter[]
@@ -27,21 +28,36 @@ export default function ProyectListLayout({
   // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredProjects
+  //              onChange={(e) => setSearchValue(e.target.value)}
+
+  const tagList = projects.map((p: any) => p.tags.map((t: any) => t))
+  const tagsFiltered = [...new Set(tagList.flat())]
 
   return (
     <>
       <div className="divide-y">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             {title}
           </h1>
-          <div className="relative max-w-lg">
+          <div className="relative flex max-w-lg overflow-hidden rounded-md border border-gray-300 dark:border-gray-700">
+            <select
+              className="h-10 appearance-none  border-none bg-gray-100 pl-5  pr-10 uppercase text-gray-600 focus:outline-none dark:bg-gray-900 dark:text-gray-300"
+              onChange={(e) => setSearchValue(e.target.value)}
+            >
+              <option disabled>Filtrar por tags</option>
+              {tagsFiltered.map((t: any, i: number) => (
+                <option value={t} key={t} className="uppercase">
+                  {t?.split('_').join('\xa0')}
+                </option>
+              ))}
+            </select>
             <input
               aria-label="Search articles"
               type="text"
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Buscar proyectos"
-              className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-700 dark:bg-black dark:text-gray-100"
+              className="w-full border-none bg-white px-4 py-2 text-gray-900 focus:ring-gray-400 dark:bg-black dark:text-gray-100"
             />
             <svg
               className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"
@@ -59,20 +75,28 @@ export default function ProyectListLayout({
             </svg>
           </div>
         </div>
-        <section className="pt-9">
+        <section className="flex flex-wrap gap-6 pt-9">
           {!filteredProjects.length && 'No posts found.'}
           {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags, cover } = frontMatter
+            const { slug, title, summary, tags, cover, color } = frontMatter
             return (
-              <div
-                key={slug}
-                className="flex h-80 w-60 transform flex-col justify-end rounded-lg bg-cover p-2 shadow-xl transition duration-500 hover:scale-105 "
-                style={{
-                  backgroundImage: `linear-gradient(360deg, rgba(0,0,0,0.8) 0%, rgba(0,212,255,0) 100%), url(${cover})`,
-                }}
-              >
-                <h3 className="font-semibold text-white">{title}</h3>
-              </div>
+              <Link key={slug} href={`/proyectos/${slug}`}>
+                <div
+                  className="flex h-80 w-60 transform flex-col justify-end gap-px overflow-hidden rounded-lg bg-cover p-2 shadow-xl transition duration-500 hover:scale-105"
+                  style={{
+                    backgroundImage: `linear-gradient(360deg, ${
+                      color ? color : 'rgba(0,0,0,0.8)'
+                    } 0%, transparent 100%), url(${cover})`,
+                  }}
+                >
+                  <h3 className="text-ellipsis font-semibold text-white">{title}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {tags.map((t: any) => (
+                      <Tag key={t} text={t.split('_').join('\xa0')} />
+                    ))}
+                  </div>
+                </div>
+              </Link>
             )
           })}
         </section>

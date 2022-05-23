@@ -3,9 +3,9 @@ name: ✨ Ana Fernández
 avatar: /static/images/avatar.png
 occupation: Frontend developer
 email: hola@heyanabanana.es
-twitter: https://twitter.com/Twitter
-linkedin: https://www.linkedin.com
-github: https://github.com
+github: https://github.com/heyanabanana
+twitter: https://twitter.com/hey_anabanana
+linkedin: https://www.linkedin.com/in/anafernandezvaldes/
 ---
 
 Soy de Asturias 🌲, España. Estudié el Grado de Diseño de Producto, en la Escuela Superior de Arte del Principado de Asturias, y continué mi formación en Diseño Gráfico de forma autodidacta.

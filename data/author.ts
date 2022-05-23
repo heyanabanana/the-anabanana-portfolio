@@ -1,5 +1,5 @@
-import { AuthorProps } from '@/shared/models/AuthorFrontMatter'
-export const author: AuthorProps = {
+import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
+export const author: AuthorFrontMatter = {
   name: '✨ Ana Fernández',
   avatar: '/static/images/avatar.png',
   occupation: 'Frontend developer',

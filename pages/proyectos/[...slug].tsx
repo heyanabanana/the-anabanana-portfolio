@@ -1,3 +1,5 @@
+import React from 'react'
+
 import fs from 'fs'
 import PageTitle from '@/shared/components/ui/sections/PageTitle'
 import generateRss from '@/shared/lib/generate-rss'
@@ -5,13 +7,14 @@ import { MDXLayoutRenderer } from '@/shared/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/shared/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
-import { PostFrontMatter } from 'types/PostFrontMatter'
-import { Toc } from 'types/Toc'
+import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
+import { Toc } from '@/shared/models/Toc'
+import { author } from '@/data/author'
 
-const DEFAULT_LAYOUT = 'PostLayout'
+const DEFAULT_LAYOUT = 'ProjectLayout'
 
 export async function getStaticPaths() {
-  const posts = getFiles('blog')
+  const posts = getFiles('projects')
   return {
     paths: posts.map((p) => ({
       params: {
@@ -30,11 +33,11 @@ export const getStaticProps: GetStaticProps<{
   next?: { slug: string; title: string }
 }> = async ({ params }) => {
   const slug = (params.slug as string[]).join('/')
-  const allPosts = await getAllFilesFrontMatter('blog')
+  const allPosts = await getAllFilesFrontMatter('projects')
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === slug)
   const prev: { slug: string; title: string } = allPosts[postIndex + 1] || null
   const next: { slug: string; title: string } = allPosts[postIndex - 1] || null
-  const post = await getFileBySlug<PostFrontMatter>('blog', slug)
+  const post = await getFileBySlug<PostFrontMatter>('projects', slug)
   // @ts-ignore
   const authorList = post.frontMatter.authors || ['default']
   const authorPromise = authorList.map(async (author) => {
@@ -75,7 +78,7 @@ export default function Projects({
           toc={toc}
           mdxSource={mdxSource}
           frontMatter={frontMatter}
-          authorDetails={authorDetails}
+          authorDetails={author}
           prev={prev}
           next={next}
         />

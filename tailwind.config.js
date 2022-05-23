@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable @typescript-eslint/no-var-requires */
 
 const defaultTheme = require('tailwindcss/defaultTheme')
 
@@ -8,6 +7,7 @@ module.exports = {
   experimental: {
     optimizeUniversalDefaults: true,
   },
+  mode: 'jit',
   content: [
     './pages/**/*.tsx',
     './shared/components/**/*.tsx',

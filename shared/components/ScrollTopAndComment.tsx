@@ -1,7 +1,17 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { motion, useSpring, useTransform, useViewportScroll } from 'framer-motion'
 
 const ScrollTopAndComment = () => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState<boolean>(false)
+  const [isComplete, setIsComplete] = useState<boolean>(false)
+
+  const scrollYProgress = window.scrollY
+
+  const pathLength = useSpring(window.scrollY, { stiffness: 400, damping: 90 })
+
+  useEffect(() => {
+    if (window.scrollY >= 100) setIsComplete(true)
+  }, [])
 
   useEffect(() => {
     const handleWindowScroll = () => {
@@ -16,13 +26,40 @@ const ScrollTopAndComment = () => {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
   const handleScrollToComment = () => {
-    document.getElementById('comment').scrollIntoView()
+    document?.getElementById('comment')?.scrollIntoView()
   }
+
   return (
     <div
       className={`fixed right-8 bottom-8 hidden flex-col gap-3 ${show ? 'md:flex' : 'md:hidden'}`}
     >
+      <svg className="progress-icon" viewBox="0 0 60 60">
+        <motion.path
+          fill="none"
+          strokeWidth="5"
+          stroke="white"
+          strokeDasharray="0 1"
+          d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
+          style={{
+            pathLength,
+            rotate: 90,
+            translateX: 5,
+            translateY: 5,
+            scaleX: -1, // Reverse direction of line animation
+          }}
+        />
+        <motion.path
+          fill="none"
+          strokeWidth="5"
+          stroke="white"
+          d="M14,26 L 22,33 L 35,16"
+          initial={false}
+          strokeDasharray="0 1"
+          animate={{ pathLength: isComplete ? 1 : 0 }}
+        />
+      </svg>
       <button
         aria-label="Scroll To Comment"
         type="button"
@@ -54,5 +91,4 @@ const ScrollTopAndComment = () => {
     </div>
   )
 }
-
 export default ScrollTopAndComment

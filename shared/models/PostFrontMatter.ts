@@ -5,6 +5,7 @@ export type PostFrontMatter = {
   lastmod?: string
   draft?: boolean
   cover?: string
+  color?: string
   summary?: string
   images?: string[]
   authors?: string[]
