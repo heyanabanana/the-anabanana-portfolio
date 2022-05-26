@@ -12,7 +12,9 @@ export const getStaticProps: GetStaticProps<{ tags: Record<string, number> }> = 
   return { props: { tags } }
 }
 
-export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function NotesTypeListLayout({
+  tags,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
   return (
     <>

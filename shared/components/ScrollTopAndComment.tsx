@@ -10,7 +10,7 @@ const ScrollTopAndComment = ({
   author,
   url,
 }: {
-  type?: 'blog' | 'project'
+  type?: 'blog' | 'project' | 'notes'
   slug?: string
   text?: string
   author?: any
@@ -71,9 +71,11 @@ const ScrollTopAndComment = ({
         url={url || ''}
       />
       <ShareOnLinkedin type={type || 'blog'} slug={slug || ''} url={url || ''} size="icon" />
-      <div className={`relative h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700 ${
+      <div
+        className={`relative h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700 ${
           show ? 'flex' : 'hidden'
-        }`}>
+        }`}
+      >
         <div
           className="rounded-full bg-primary"
           style={{

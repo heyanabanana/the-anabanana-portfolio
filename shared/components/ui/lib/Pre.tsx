@@ -18,7 +18,7 @@ const Pre = ({ children }: Props) => {
   }
   const onCopy = () => {
     setCopied(true)
-    navigator.clipboard.writeText(textInput.current.textContent)
+    navigator.clipboard.writeText(textInput?.current?.textContent)
     setTimeout(() => {
       setCopied(false)
     }, 2000)
@@ -67,7 +67,7 @@ const Pre = ({ children }: Props) => {
         </button>
       )}
 
-      <pre>{children}</pre>
+      <pre className="bg-black">{children}</pre>
     </div>
   )
 }

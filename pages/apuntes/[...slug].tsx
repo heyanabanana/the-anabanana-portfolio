@@ -12,7 +12,7 @@ import { author } from '@/data/author'
 const DEFAULT_LAYOUT = 'PostLayout'
 
 export async function getStaticPaths() {
-  const posts = getFiles('blog')
+  const posts = getFiles('notes')
   return {
     paths: posts.map((p) => ({
       params: {
@@ -26,23 +26,16 @@ export async function getStaticPaths() {
 // @ts-ignore
 export const getStaticProps: GetStaticProps<{
   post: { mdxSource: string; toc: Toc; frontMatter: PostFrontMatter }
-  authorDetails: AuthorFrontMatter[]
+  authorDetails: AuthorFrontMatter
   prev?: { slug: string; title: string }
   next?: { slug: string; title: string }
 }> = async ({ params }) => {
-  const slug = (params.slug as string[]).join('/')
-  const allPosts = await getAllFilesFrontMatter('blog')
+  const slug = (params?.slug as string[]).join('/')
+  const allPosts = await getAllFilesFrontMatter('notes')
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === slug)
   const prev: { slug: string; title: string } = allPosts[postIndex + 1] || null
   const next: { slug: string; title: string } = allPosts[postIndex - 1] || null
-  const post = await getFileBySlug<PostFrontMatter>('blog', slug)
-  // @ts-ignore
-  const authorList = post.frontMatter.authors || ['default']
-  const authorPromise = authorList.map(async (author) => {
-    const authorResults = await getFileBySlug<AuthorFrontMatter>('authors', [author])
-    return authorResults.frontMatter
-  })
-  const authorDetails = await Promise.all(authorPromise)
+  const post = await getFileBySlug<PostFrontMatter>('notes', slug)
 
   // rss
   if (allPosts.length > 0) {
@@ -53,19 +46,13 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       post,
-      authorDetails,
       prev,
       next,
     },
   }
 }
 
-export default function Blog({
-  post,
-  authorDetails,
-  prev,
-  next,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Blog({ post, prev, next }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { mdxSource, toc, frontMatter } = post
 
   return (

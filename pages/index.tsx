@@ -6,7 +6,7 @@ import { getAllFilesFrontMatter } from '@/shared/lib/mdx'
 import formatDate from '@/shared/lib/utils/formatDate'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
-import { IndexCTA } from '@/shared/components/ui/sections/IndexCTA'
+import {  IndexCTA } from '@/shared/components/ui/sections/IndexCTA'
 
 const MAX_DISPLAY = 5
 
@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps<{
   posts: PostFrontMatter[]
   projects: PostFrontMatter[]
 }> = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
+  const posts = await getAllFilesFrontMatter('notes')
   const projects = await getAllFilesFrontMatter('projects')
   return { props: { posts, projects } }
 }
@@ -26,19 +26,7 @@ export default function Home({ posts, projects }: InferGetStaticPropsType<typeof
       <div>
         <div className="space-y-2 pt-12 pb-8 md:space-y-5">
           <IndexCTA />
-          <p className="text-2xl leading-9 text-gray-600 dark:text-gray-400">
-            Desarrollo cosas en javascript y a veces diseño otras. Trabajo como Frontend developer
-            en
-            <a
-              href="https://open-bootcamp.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mx-1 font-semibold text-teal-400 dark:text-teal-200"
-            >
-              OpenBootcamp.
-            </a>
-            Escribo cosas sobre lo que aprendo.
-          </p>
+          
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}

@@ -81,7 +81,7 @@ export default function ProjectLayout({ frontMatter, next, prev, children }: Pro
                         Proyecto anterior
                       </h2>
                       <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
+                        <Link href={`/proyectos/${prev.slug}`}>{prev.title}</Link>
                       </div>
                     </div>
                   ) : (
@@ -93,7 +93,7 @@ export default function ProjectLayout({ frontMatter, next, prev, children }: Pro
                         Siguiente proyecto
                       </h2>
                       <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/blog/${next.slug}`}>{next.title}</Link>
+                        <Link href={`/proyectos/${next.slug}`}>{next.title}</Link>
                       </div>
                     </div>
                   ) : (

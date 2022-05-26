@@ -13,4 +13,6 @@ export type PostFrontMatter = {
   canonicalUrl?: string
   slug: string
   fileName: string
+  category?: string[]
+  icon?: string
 }

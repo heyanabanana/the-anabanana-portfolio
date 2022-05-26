@@ -7,7 +7,7 @@ import { kebabCase } from './utils/kebabCase'
 
 const root = process.cwd()
 
-export async function getAllTags(type: 'blog' | 'projects' | 'authors') {
+export async function getAllTypes(type: 'notes') {
   const files = getFiles(type)
 
   const tagCount: Record<string, number> = {}

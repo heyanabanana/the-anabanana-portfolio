@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
 import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
+import { author } from '@/data/author'
 
 interface CommonSEOProps {
   title: string
@@ -134,7 +135,7 @@ export const BlogSEO = ({
 
   let authorList = {
     '@type': 'Person',
-    name: authorDetails.name,
+    name: author.name,
   }
 
   const structuredData = {
@@ -166,7 +167,7 @@ export const BlogSEO = ({
     <>
       <CommonSEO
         title={title}
-        description={summary}
+        description={summary || ''}
         ogType="article"
         ogImage={featuredImages}
         twImage={twImageUrl}
