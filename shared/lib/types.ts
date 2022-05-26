@@ -16,8 +16,8 @@ export async function getAllTypes(type: 'notes') {
     const source = fs.readFileSync(path.join(root, 'data', type, file), 'utf8')
     const matterFile = matter(source)
     const data = matterFile.data as PostFrontMatter
-    if (data.tags && data.draft !== true) {
-      data.tags.forEach((tag) => {
+    if (data.category && data.draft !== true) {
+      data.category.forEach((tag) => {
         const formattedTag = kebabCase(tag)
         if (formattedTag in tagCount) {
           tagCount[formattedTag] += 1
