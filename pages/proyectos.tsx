@@ -9,7 +9,7 @@ export const POSTS_PER_PAGE = 5
 
 export const getStaticProps: GetStaticProps<{
   posts: ComponentProps<typeof ProjectListLayout>['projects']
-  initialDisplayPosts: ComponentProps<typeof ProjectListLayout>['initialDisplayPosts']
+  initialDisplayPosts: ComponentProps<typeof ProjectListLayout>['initialDisplayProjects']
   pagination: ComponentProps<typeof ProjectListLayout>['pagination']
 }> = async () => {
   const posts = await getAllFilesFrontMatter('projects')
@@ -34,7 +34,7 @@ export default function Proyectos({
         projects={projects}
         initialDisplayProjects={initialDisplayPosts}
         pagination={pagination}
-        title="Todos los proyectos 🚀"
+        title="🚀 Todos los proyectos "
       />
     </>
   )

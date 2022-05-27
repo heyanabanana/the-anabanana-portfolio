@@ -1,3 +1,4 @@
+import { ProjectsFrontMatter } from '@/shared/models'
 import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 import fs from 'fs'
 import matter from 'gray-matter'
@@ -15,7 +16,7 @@ export async function getAllTags(type: 'blog' | 'projects' | 'authors') {
   files.forEach((file) => {
     const source = fs.readFileSync(path.join(root, 'data', type, file), 'utf8')
     const matterFile = matter(source)
-    const data = matterFile.data as PostFrontMatter
+    const data = matterFile.data as PostFrontMatter | ProjectsFrontMatter
     if (data.tags && data.draft !== true) {
       data.tags.forEach((tag) => {
         const formattedTag = kebabCase(tag)

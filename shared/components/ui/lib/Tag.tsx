@@ -10,10 +10,10 @@ const Tag = ({ text }: Props) => {
   return (
     <Link href={`/tags/${kebabCase(text)}`}>
       <a
-        className="rounded-md px-2 text-xs font-semibold uppercase text-white"
+        className="duration-400 transform rounded-md px-2 text-xs font-semibold uppercase text-white transition hover:scale-110 hover:bg-opacity-70"
         style={{ backgroundColor: generateHSL(text) }}
       >
-        {text.split(' ').join('-')}
+        {text.split('-').join(' ')}
       </a>
     </Link>
   )

@@ -7,6 +7,10 @@ import { generateHSL } from '@/shared/lib/utils/color-generator'
 import { ProjectsFrontMatter } from '@/shared/models'
 import { BiDownArrowAlt } from 'react-icons/bi'
 import { ProjectCard } from '../cards/ProjectCard'
+import { getAllFilesFrontMatter } from '@/shared/lib/mdx'
+import { GetStaticProps } from 'next'
+import { getAllTags } from '@/shared/lib/tags'
+import { useRouter } from 'next/router'
 
 interface Props {
   projects: ProjectsFrontMatter[]
@@ -21,6 +25,8 @@ export default function ProyectListLayout({
   initialDisplayProjects = [],
   pagination,
 }: Props) {
+  const { asPath } = useRouter()
+
   const [searchValue, setSearchValue] = useState('')
   const filteredProjects = projects.filter((frontMatter) => {
     const searchContent = frontMatter.title + frontMatter.tags.join(' ')
@@ -36,9 +42,9 @@ export default function ProyectListLayout({
   const tagsFiltered = [...new Set(tagList.flat())]
 
   return (
-    <div>
-      <div className="flex w-full flex-col  justify-between pt-6 pb-12 md:flex-row">
-        <h1 className="flex items-center gap-4 text-2xl font-extrabold leading-9 tracking-tight sm:text-3xl md:items-center md:text-4xl">
+    <div className="space-y-6">
+      <div className="flex w-full flex-col items-center justify-center gap-4 pt-6 md:flex-row md:justify-between">
+        <h1 className="flex items-center gap-4 text-3xl font-extrabold leading-9 tracking-tight sm:text-3xl md:items-center md:text-4xl">
           {title}
         </h1>
 
@@ -66,22 +72,29 @@ export default function ProyectListLayout({
           </svg>
         </div>
       </div>
+      {asPath === '/proyectos' && (
+        <div className="flex w-full items-center justify-center gap-3 pb-6">
+          {tagsFiltered.map((t: any) => (
+            <Tag key={t} text={t.split('-').join('\xa0')} />
+          ))}
+        </div>
+      )}
       <div className="flex flex-col gap-6">
-        <h2 className="flex items-center justify-center md:justify-start gap-2 text-3xl font-bold leading-8 tracking-tight ">
+        <h2 className="flex items-center justify-center gap-2 text-3xl font-bold leading-8 tracking-tight md:justify-start ">
           Proyectos detacados <BiDownArrowAlt />
         </h2>
-        <section className="flex gap-4 flex-wrap justify-center md:justify-start">
+        <section className="flex flex-wrap justify-center gap-4 md:justify-start">
           {featProjects?.map((project: ProjectsFrontMatter) => {
             return <ProjectCard key={project.slug} project={project} />
           })}
         </section>
       </div>
       <div className="flex flex-col gap-6">
-        <h2 className="flex items-center gap-2 justify-center md:justify-start text-3xl font-bold leading-8 tracking-tight pt-12">
+        <h2 className="flex items-center justify-center gap-2 pt-12 text-3xl font-bold leading-8 tracking-tight md:justify-start">
           Todos los proyectos <BiDownArrowAlt />
         </h2>
-        <section className="flex gap-4 flex-wrap justify-center md:justify-start">
-        {!filteredProjects.length && 'No hemos encontrado resultados.'}
+        <section className="flex flex-wrap justify-center gap-4 md:justify-start">
+          {!filteredProjects.length && 'No hemos encontrado resultados.'}
 
           {displayProjects?.map((project: ProjectsFrontMatter) => {
             return <ProjectCard key={project.slug} project={project} />

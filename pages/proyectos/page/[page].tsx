@@ -57,9 +57,9 @@ export default function ProjectPage({
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       <ProjectListLayout
         projects={posts}
-        initialDisplayPosts={initialDisplayPosts}
+        initialDisplayProjects={initialDisplayPosts}
         pagination={pagination}
-        title="Todos los proyectos 🚀"
+        title="🚀 Todos los proyectos "
       />
     </>
   )

@@ -12,7 +12,7 @@ const normalizeHash = (hash: any, min = 10, max = 20) => {
   return Math.floor((hash % (max - min)) + min)
 }
 
-const generateHSL = (name: any, saturationRange = [10, 30], lightnessRange = [30, 70]) => {
+const generateHSL = (name: any, saturationRange = [10, 30], lightnessRange = [30, 60]) => {
   const hash = getHashOfString(name)
   let h = normalizeHash(hash, 0, 360)
   let s = normalizeHash(hash, saturationRange[0], saturationRange[1])
