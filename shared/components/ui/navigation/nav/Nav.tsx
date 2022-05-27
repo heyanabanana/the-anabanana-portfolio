@@ -6,7 +6,7 @@ import Link from '../../lib/Link'
 
 export const Nav = () => {
   return (
-    <div className="flex items-center text-base leading-5">
+    <div className="flex items-center text-base ">
       <div className="hidden sm:block">
         {headerNavLinks.map((link) => (
           <Link

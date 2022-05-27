@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react'
+import Link from 'next/link'
 import Typed from 'typed.js'
 
 export const IndexCTA = () => {
   const el = useRef(null)
 
   useEffect(() => {
+    //@ts-ignore
     const typed = new Typed(el.current, {
       strings: ['Diseño UI/UX', 'Desarrollo Frontend', 'Diseño de producto'], // Strings to display
       // Speed settings, try diffrent values untill you get good results
@@ -21,14 +23,14 @@ export const IndexCTA = () => {
     }
   }, [])
   return (
-    <div className="mx-auto max-w-screen-xl px-4 py-32 ">
+    <div className="mx-auto max-w-screen-xl px-4 py-6 md:py-16 lg:py-32">
       <div className="mx-auto flex max-w-xl flex-col gap-4 text-center">
-        <h1 className="align-center flex justify-center text-center text-4xl font-extrabold sm:text-6xl xl:text-7xl">
+        <h1 className="align-center xs:text-4xl flex justify-center text-center text-2xl font-extrabold sm:text-6xl xl:text-7xl">
           Hola <div className="cursor-pointer hover:animate-wave">👋</div>, soy Ana
         </h1>
-        <h2 className="align-center flex justify-center text-center text-2xl font-extrabold sm:text-4xl xl:text-5xl">
+        <h2 className="align-center flex justify-center text-center text-xl font-extrabold sm:text-4xl xl:text-5xl">
           <span
-            className="bg-gradient-to-r from-orange-400 to-rose-400 dark:from-orange-300 dark:to-rose-300 bg-clip-text text-transparent "
+            className="bg-gradient-to-r from-orange-400 to-rose-400 bg-clip-text text-transparent dark:from-orange-300 dark:to-rose-300 "
             ref={el}
           ></span>
         </h2>
@@ -46,19 +48,17 @@ export const IndexCTA = () => {
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <a
-            className="block w-full rounded bg-primary px-12 py-3 text-sm font-medium text-white shadow hover:bg-primary-600 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
-            href="/get-started"
-          >
-            Ver proyectos
-          </a>
+          <Link href="/proyectos" passHref>
+            <button className="block w-full rounded bg-primary px-12 py-3 text-sm font-medium text-white shadow hover:bg-primary-600 focus:outline-none focus:ring active:bg-red-500 sm:w-auto">
+              Ver proyectos
+            </button>
+          </Link>
 
-          <a
-            className="block w-full rounded border border-primary-300 px-12 py-3 text-sm font-medium text-primary hover:text-primary-600 focus:outline-none focus:ring active:text-primary-500 dark:text-primary-300 sm:w-auto"
-            href="/about"
-          >
-            Sobre mi
-          </a>
+          <Link passHref href="/sobre-mi">
+            <button className="block w-full rounded border border-primary-300 px-12 py-3 text-sm font-medium text-primary hover:text-primary-600 focus:outline-none focus:ring active:text-primary-500 dark:text-primary-300 sm:w-auto">
+              Sobre mi
+            </button>
+          </Link>
         </div>
       </div>
     </div>

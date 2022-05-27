@@ -4,19 +4,25 @@ import { ReactNode } from 'react'
 import { Header } from '../navigation/Header'
 import Image from 'next/image'
 import BgGradient from '@/public/static/images/BGGradient.png'
+import { useRouter } from 'next/router'
+
 interface Props {
   children: ReactNode
 }
 
 const LayoutWrapper = ({ children }: Props) => {
+  const { asPath } = useRouter()
+
   return (
-    <SectionContainer>
-      <div className="flex min-h-screen flex-col justify-between">
-        <Header />
-        <main className="	mb-auto h-full">{children}</main>
-        <Footer />
-      </div>
-    </SectionContainer>
+    <div className="bg-white transition duration-500 dark:bg-black">
+      {asPath !== '/links' && <Header />}
+      <SectionContainer>
+        <div className="flex min-h-screen flex-col justify-between">
+          <main className="	mb-auto h-full">{children}</main>
+          {asPath !== '/links' && <Footer />}
+        </div>
+      </SectionContainer>
+    </div>
   )
 }
 

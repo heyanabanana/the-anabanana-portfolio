@@ -7,27 +7,27 @@
       <language>es-us</language>
       <managingEditor>hola@heyanabanana.es (Ana Fernández)</managingEditor>
       <webMaster>hola@heyanabanana.es (Ana Fernández)</webMaster>
-      <lastBuildDate>Mon, 21 Dec 2020 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Thu, 26 May 2022 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://heyanabanana.es/feed.xml" rel="self" type="application/rss+xml"/>
       
   <item>
-    <guid>https://heyanabanana.es/blog/deriving-ols-estimator-2</guid>
-    <title>Deriving the OLS Estimator</title>
-    <link>https://heyanabanana.es/blog/deriving-ols-estimator-2</link>
-    <description>How to derive the OLS Estimator with matrix notation and a tour of math typesetting using markdown with the help of KaTeX.</description>
-    <pubDate>Mon, 21 Dec 2020 00:00:00 GMT</pubDate>
+    <guid>https://heyanabanana.es/blog/html/elementos-estructurales</guid>
+    <title>Elementos estructurales</title>
+    <link>https://heyanabanana.es/blog/html/elementos-estructurales</link>
+    <description>Elementos estructurales</description>
+    <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
     <author>hola@heyanabanana.es (Ana Fernández)</author>
-    <category>next_js</category><category>math</category><category>ols</category>
+    <category>html-5</category>
   </item>
 
   <item>
-    <guid>https://heyanabanana.es/blog/deriving-ols-estimator</guid>
-    <title>Deriving the OLS Estimator</title>
-    <link>https://heyanabanana.es/blog/deriving-ols-estimator</link>
-    <description>How to derive the OLS Estimator with matrix notation and a tour of math typesetting using markdown with the help of KaTeX.</description>
-    <pubDate>Mon, 21 Dec 2020 00:00:00 GMT</pubDate>
+    <guid>https://heyanabanana.es/blog/html/introduccion-a-html</guid>
+    <title>Introducción a HTML5</title>
+    <link>https://heyanabanana.es/blog/html/introduccion-a-html</link>
+    <description>HTML significa Lenguaje de Marcado de Hiper Texto (Hiper Text Markup Language), es decir, es un lenguaje de marcado, no de programación</description>
+    <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
     <author>hola@heyanabanana.es (Ana Fernández)</author>
-    <category>next_js</category><category>math</category><category>hello_world</category>
+    <category>html-5</category>
   </item>
 
     </channel>

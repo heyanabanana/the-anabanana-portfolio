@@ -18,7 +18,7 @@ export const ShareOnTwitter = ({
   return size === 'full' ? (
     <a
       href={`https://twitter.com/intent/tweet?url=${url}${
-        type === 'blog' ? 'apuntes' : 'proyectos'
+        type === 'notes' ? 'apuntes' : 'proyectos'
       }/${slug}&text=${text.replace(' ', '%20')}${author}`}
       rel="noopener noreferrer"
       target="_blank"
@@ -33,7 +33,7 @@ export const ShareOnTwitter = ({
   ) : (
     <a
       href={`https://twitter.com/intent/tweet?url=${url}${
-        type === 'blog' ? 'apuntes' : 'proyectos'
+        type === 'notes' ? 'apuntes' : 'proyectos'
       }/${slug}&text=${text.replace(' ', '%20')}${author}`}
       rel="noopener noreferrer"
       target="_blank"

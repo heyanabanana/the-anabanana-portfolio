@@ -32,7 +32,7 @@ export default function Proyectos({
       <PageSEO title={`Proyectos - ${siteMetadata.author}`} description={siteMetadata.description} />
       <ProjectListLayout
         projects={projects}
-        initialDisplayPosts={initialDisplayPosts}
+        initialDisplayProjects={initialDisplayPosts}
         pagination={pagination}
         title="Todos los proyectos 🚀"
       />

@@ -2,9 +2,8 @@ import siteMetadata from '@/data/siteMetadata'
 import generateRss from '@/lib/generate-rss'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { TagSEO } from '@/shared/components/SEO'
-import ListLayout from '@/shared/components/ui/layouts/ListLayout'
+import NotesListLayout from '@/shared/components/ui/layouts/NotesListLayout'
 import { kebabCase } from '@/shared/lib/utils/kebabCase'
-import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 import fs from 'fs'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import path from 'path'
@@ -54,7 +53,7 @@ export default function Tag({ posts, category }: InferGetStaticPropsType<typeof 
         title={`${category} - ${siteMetadata.title}`}
         description={`${category} ${siteMetadata.author}`}
       />
-      <ListLayout posts={posts} title={title} />
+      <NotesListLayout posts={posts} title={title} />
     </>
   )
 }

@@ -1,3 +1,4 @@
+export * from './ProjectsFrontMatter'
 export * from './AuthorFrontMatter'
 export * from './NotesFrontMatter'
 export * from './PostFrontMatter'

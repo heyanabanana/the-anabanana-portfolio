@@ -22,6 +22,7 @@ import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
+import { NotesFrontMatter } from '@/shared/models'
 
 const root = process.cwd()
 
@@ -117,7 +118,7 @@ export async function getAllFilesFrontMatter(folder: 'notes' | 'blog' | 'project
 
   const files = getAllFilesRecursively(prefixPaths)
 
-  const allFrontMatter: PostFrontMatter[] = []
+  const allFrontMatter: any[] = []
 
   files.forEach((file: string) => {
     // Replace is needed to work on Windows
@@ -128,7 +129,7 @@ export async function getAllFilesFrontMatter(folder: 'notes' | 'blog' | 'project
     }
     const source = fs.readFileSync(file, 'utf8')
     const matterFile = matter(source)
-    const frontmatter = matterFile.data as AuthorFrontMatter | PostFrontMatter
+    const frontmatter = matterFile.data as AuthorFrontMatter | PostFrontMatter | NotesFrontMatter
     if ('draft' in frontmatter && frontmatter.draft !== true) {
       allFrontMatter.push({
         ...frontmatter,

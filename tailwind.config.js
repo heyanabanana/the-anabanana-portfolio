@@ -65,6 +65,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
+        //@ts-ignore
         sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
       },
       colors: {
@@ -138,6 +139,7 @@ module.exports = {
         white: '#f8f7f4',
       },
       fill: (theme) => ({
+        //@ts-ignore
         ...theme('colors'),
       }),
       typography: (theme) => ({
