@@ -14,6 +14,8 @@ const siteMetadata = {
   github: 'https://github.com/heyanabanana',
   twitter: 'https://twitter.com/hey_anabanana',
   linkedin: 'https://www.linkedin.com/in/anafernandezvaldes/',
+  instagram: 'https://www.instagram.com/hey.anabanana/',
+
   locale: 'es-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
