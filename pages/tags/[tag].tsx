@@ -34,7 +34,7 @@ export const getStaticProps = async (context: any) => {
 
   // rss
   if (filteredPosts.length > 0) {
-    const rss = generateRss(filteredPosts, `proyectos/${tag}/feed.xml`)
+    const rss = generateRss(filteredPosts, `proyectos/${tag}/feed.xml`, 'projects')
     const rssPath = path.join(root, 'public', 'proyectos', tag)
     fs.mkdirSync(rssPath, { recursive: true })
     fs.writeFileSync(path.join(rssPath, 'feed.xml'), rss)

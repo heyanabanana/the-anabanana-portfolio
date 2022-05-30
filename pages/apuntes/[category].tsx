@@ -5,7 +5,7 @@ import { TagSEO } from '@/shared/components/SEO'
 import NotesListLayout from '@/shared/components/ui/layouts/NotesListLayout'
 import { kebabCase } from '@/shared/lib/utils/kebabCase'
 import fs from 'fs'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { InferGetStaticPropsType } from 'next'
 import path from 'path'
 import { getAllTypes } from '@/shared/lib/types'
 
@@ -30,12 +30,12 @@ export const getStaticProps = async (
   const category = context?.params?.category as string
   const allPosts = await getAllFilesFrontMatter('notes')
   const filteredPosts = allPosts.filter(
-    (post) => post.draft !== true && post?.category?.map((t) => kebabCase(t)).includes(category)
+    (post) => post.draft !== true && post?.category?.map((t: any) => kebabCase(t)).includes(category)
   )
 
   // rss
   if (filteredPosts.length > 0) {
-    const rss = generateRss(filteredPosts, `apuntes/${category}/feed.xml`)
+    const rss = generateRss(filteredPosts, `apuntes/${category}/feed.xml`, 'notes')
     const rssPath = path.join(root, 'public', 'apuntes', category)
     fs.mkdirSync(rssPath, { recursive: true })
     fs.writeFileSync(path.join(rssPath, 'feed.xml'), rss)

@@ -124,7 +124,7 @@ export default function PostLayout({ frontMatter, next, prev, children }: Props)
                         Anterior
                       </h2>
                       <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
+                        <Link href={`/notes/${prev.slug}`}>{prev.title}</Link>
                       </div>
                     </div>
                   ) : (
@@ -136,7 +136,7 @@ export default function PostLayout({ frontMatter, next, prev, children }: Props)
                         Siguiente
                       </h2>
                       <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/blog/${next.slug}`}>{next.title}</Link>
+                        <Link href={`/notes/${next.slug}`}>{next.title}</Link>
                       </div>
                     </div>
                   ) : (

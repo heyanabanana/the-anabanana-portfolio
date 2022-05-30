@@ -7,15 +7,15 @@
       <language>es-us</language>
       <managingEditor>hola@heyanabanana.es (Ana Fernández)</managingEditor>
       <webMaster>hola@heyanabanana.es (Ana Fernández)</webMaster>
-      <lastBuildDate>Fri, 27 May 2022 00:00:00 GMT</lastBuildDate>
-      <atom:link href="https://heyanabanana.es/apuntes/html/feed.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 26 May 2022 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://heyanabanana.es/apuntes/html-2/feed.xml" rel="self" type="application/rss+xml"/>
       
   <item>
-    <guid>https://heyanabanana.es/apuntes/html/etiquedas-texto</guid>
-    <title>Etiquetas de texto</title>
-    <link>https://heyanabanana.es/notes/html/etiquedas-texto</link>
-    <description>Diferentes etiquetas de texto para los documentos HTML</description>
-    <pubDate>Fri, 27 May 2022 00:00:00 GMT</pubDate>
+    <guid>https://heyanabanana.es/apuntes/html/elementos-estructurales</guid>
+    <title>Elementos estructurales</title>
+    <link>https://heyanabanana.es/notes/html/elementos-estructurales</link>
+    <description>Elementos estructurales que componen un documento HTML</description>
+    <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
     <author>hola@heyanabanana.es (Ana Fernández)</author>
     <category>html-5</category>
   </item>

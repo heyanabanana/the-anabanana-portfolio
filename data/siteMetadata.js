@@ -6,7 +6,7 @@ const siteMetadata = {
   language: 'es-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://heyanabanana.es',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteRepo: 'https://github.com/heyanabanana/the-anabanana-portfolio',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',

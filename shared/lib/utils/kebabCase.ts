@@ -1,3 +1,3 @@
-import { slug } from 'github-slugger'
-
-export const kebabCase = (str: string) => slug(str)
+import GithubSlugger from 'github-slugger'
+const slugger = new GithubSlugger()
+export const kebabCase = (str: string) => slugger.slug(str)

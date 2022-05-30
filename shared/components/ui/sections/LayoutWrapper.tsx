@@ -2,8 +2,6 @@ import SectionContainer from './SectionContainer'
 import Footer from '../navigation/Footer'
 import { ReactNode } from 'react'
 import { Header } from '../navigation/Header'
-import Image from 'next/image'
-import BgGradient from '@/public/static/images/BGGradient.png'
 import { useRouter } from 'next/router'
 
 interface Props {

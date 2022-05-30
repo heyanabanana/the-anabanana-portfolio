@@ -6,7 +6,6 @@ import generateRss from '@/shared/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/shared/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/shared/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
 import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 import { Toc } from '@/shared/models/Toc'
 import { author } from '@/data/author'
@@ -40,7 +39,7 @@ export const getStaticProps: GetStaticProps<{
 
   // rss
   if (allPosts.length > 0) {
-    const rss = generateRss(allPosts)
+    const rss = generateRss(allPosts, 'projects')
     fs.writeFileSync('./public/feed.xml', rss)
   }
 

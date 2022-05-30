@@ -1,13 +1,14 @@
 import { PageSEO } from '@/shared/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/shared/lib/mdx'
-import { POSTS_PER_PAGE } from '../../apuntes'
+
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 import ProjectListLayout from '@/shared/components/ui/layouts/ProjectListLayout'
+import { POSTS_PER_PAGE } from 'pages/proyectos'
 
 export const getStaticPaths: GetStaticPaths<{ page: string }> = async () => {
-  const totalPosts = await getAllFilesFrontMatter('blog')
+  const totalPosts = await getAllFilesFrontMatter('projects')
   const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({
     params: { page: (i + 1).toString() },
@@ -25,6 +26,7 @@ export const getStaticProps: GetStaticProps<{
   pagination: { currentPage: number; totalPages: number }
 }> = async (context) => {
   const {
+    //@ts-ignore
     params: { page },
   } = context
   const posts = await getAllFilesFrontMatter('projects')

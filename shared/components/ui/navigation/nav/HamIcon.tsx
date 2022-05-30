@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const HamIcon = ({ isOpen }) => {
+export const HamIcon = ({ isOpen }: { isOpen: boolean }) => {
   const hamLine = `h-1 w-6 rounded-full bg-black transition ease all duration-700${
     isOpen ? ' my-1 bg-amber-500 dark:bg-amber-300' : ' my-0.5 bg-primary-400 dark:bg-primary-400'
   }`
