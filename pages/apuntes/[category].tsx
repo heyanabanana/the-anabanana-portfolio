@@ -24,13 +24,12 @@ export async function getStaticPaths() {
   }
 }
 
-export const getStaticProps = async (
-  context: any
-) => {
+export const getStaticProps = async (context: any) => {
   const category = context?.params?.category as string
   const allPosts = await getAllFilesFrontMatter('notes')
   const filteredPosts = allPosts.filter(
-    (post) => post.draft !== true && post?.category?.map((t: any) => kebabCase(t)).includes(category)
+    (post) =>
+      post.draft !== true && post?.category?.map((t: any) => kebabCase(t)).includes(category)
   )
 
   // rss
@@ -45,15 +44,13 @@ export const getStaticProps = async (
 }
 
 export default function Tag({ posts, category }: InferGetStaticPropsType<typeof getStaticProps>) {
-  // Capitalize first letter and convert space to dash
-  const title = category[0].toUpperCase() + category.split(' ').join('-').slice(1)
   return (
     <>
       <TagSEO
         title={`${category} - ${siteMetadata.title}`}
         description={`${category} ${siteMetadata.author}`}
       />
-      <NotesListLayout posts={posts} title={title} />
+      <NotesListLayout posts={posts} title={category} />
     </>
   )
 }

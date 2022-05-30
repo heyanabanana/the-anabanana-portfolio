@@ -1,3 +1,7 @@
 import GithubSlugger from 'github-slugger'
 const slugger = new GithubSlugger()
-export const kebabCase = (str: string) => slugger.slug(str)
+export const kebabCase = (str: string) =>
+  str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase()

@@ -20,5 +20,25 @@
     <category>html-5</category>
   </item>
 
+  <item>
+    <guid>https://heyanabanana.es/apuntes/html/elementos-estructurales</guid>
+    <title>Elementos estructurales</title>
+    <link>https://heyanabanana.es/notes/html/elementos-estructurales</link>
+    <description>Elementos estructurales que componen un documento HTML</description>
+    <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
+    <author>hola@heyanabanana.es (Ana Fernández)</author>
+    <category>html-5</category>
+  </item>
+
+  <item>
+    <guid>https://heyanabanana.es/apuntes/html/introduccion-a-html</guid>
+    <title>Introducción a HTML5</title>
+    <link>https://heyanabanana.es/notes/html/introduccion-a-html</link>
+    <description>HTML significa Lenguaje de Marcado de Hiper Texto (Hiper Text Markup Language), es decir, es un lenguaje de marcado, no de programación</description>
+    <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
+    <author>hola@heyanabanana.es (Ana Fernández)</author>
+    <category>html-5</category>
+  </item>
+
     </channel>
   </rss>

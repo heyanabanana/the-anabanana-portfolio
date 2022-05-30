@@ -39,10 +39,10 @@ export default function NotesListLayout({
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex w-full justify-between pt-6 pb-6 flex-col md:flex-row">
-        <h1 className="flex items-center gap-4 text-5xl font-extrabold leading-9 tracking-tight md:leading-14">
+      <div className="flex w-full flex-col justify-between pt-6 pb-6 md:flex-row">
+        <h1 className="capitalize flex items-center gap-4 text-5xl font-extrabold leading-9 tracking-tight md:leading-14">
           {categories?.find((c: any) => c?.name.toLowerCase() === title.toLowerCase())?.icon}{' '}
-          {title}
+          {title.split('-').join(' ')}
         </h1>
 
         <div className="relative max-w-lg pt-2 md:pt-0">
@@ -87,9 +87,7 @@ export default function NotesListLayout({
           {!filteredBlogPosts.length && 'No hemos encontrado resultados.'}
           {displayPosts.map((frontMatter: NotesFrontMatter) => {
             const { slug, date, title, summary } = frontMatter
-            return (
-              <NoteCard key={frontMatter.slug} note={frontMatter} />
-            )
+            return <NoteCard key={frontMatter.slug} note={frontMatter} />
           })}
         </section>
       </div>
