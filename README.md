@@ -31,11 +31,6 @@ npm install
 
 First, run the development server:
 
-```bash
-npm start
-```
-
-or
 
 ```bash
 npm run dev
