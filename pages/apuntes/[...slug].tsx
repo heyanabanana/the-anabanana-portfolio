@@ -11,7 +11,7 @@ import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 import { Toc } from '@/shared/models/Toc'
 import { author } from '@/data/author'
 
-const DEFAULT_LAYOUT = 'ProjectLayout'
+const DEFAULT_LAYOUT = 'PostLayout'
 
 export async function getStaticPaths() {
   const notes = getFiles('notes')
@@ -59,7 +59,7 @@ export default function Projects({
   prev,
   next,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { mdxSource, toc, frontMatter } = post;
+  const { mdxSource, toc, frontMatter } = post
 
   return (
     <>

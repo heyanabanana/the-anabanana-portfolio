@@ -61,6 +61,9 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
+  images: {
+    disableStaticImages: true,
+  },
   async headers() {
     return [
       {

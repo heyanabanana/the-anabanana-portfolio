@@ -17,7 +17,6 @@ const ScrollTopAndComment = ({
   url?: string
 }) => {
   const [show, setShow] = useState<boolean>(false)
-  const [isComplete, setIsComplete] = useState<boolean>(false)
 
   const [scrollY, setScrollY] = useState(0)
   const [maxScrollY, setMaxScrollY] = useState(0)
@@ -42,9 +41,7 @@ const ScrollTopAndComment = ({
     setMaxScrollY(document.documentElement.scrollHeight - document.documentElement.clientHeight)
   }, [])
 
-  useEffect(() => {
-    if (scrollY === maxScrollY) setIsComplete(true)
-  }, [])
+
 
   useEffect(() => {
     const handleWindowScroll = () => {
@@ -71,23 +68,7 @@ const ScrollTopAndComment = ({
         url={url || ''}
       />
       <ShareOnLinkedin type={type || 'blog'} slug={slug || ''} url={url || ''} size="icon" />
-      <div
-        className={`relative h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700 ${
-          show ? 'flex' : 'hidden'
-        }`}
-      >
-        <div
-          className="rounded-full bg-primary"
-          style={{
-            width: Math.round((100 * scrollY) / maxScrollY) + '%',
-            height: Math.round((100 * scrollY) / maxScrollY) + '%',
-          }}
-        />
-        <BiCheck
-          className="absolute h-7 w-7"
-          style={{ opacity: scrollY >= maxScrollY ? '1' : '0', transition: 'opacity 0.3s' }}
-        />
-      </div>
+
       <button
         aria-label="Scroll To Top"
         type="button"

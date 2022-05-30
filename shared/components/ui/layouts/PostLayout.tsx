@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from '@/shared/components/ui/lib/Link'
 import PageTitle from '@/shared/components/ui/sections/PageTitle'
 import SectionContainer from '@/shared/components/ui/sections/SectionContainer'
@@ -34,7 +34,40 @@ interface Props {
 
 export default function PostLayout({ frontMatter, authorDetails, next, prev, children }: Props) {
   const { slug, fileName, date, title, tags } = frontMatter
+  const [show, setShow] = useState<boolean>(false)
+  const [isComplete, setIsComplete] = useState<boolean>(false)
 
+  const [scrollY, setScrollY] = useState(0)
+  const [maxScrollY, setMaxScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    // just trigger this so that the initial state
+    // is updated as soon as the component is mounted
+    // related: https://stackoverflow.com/a/63408216
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    setMaxScrollY(document.documentElement.scrollHeight - document.documentElement.clientHeight)
+  }, [])
+
+  useEffect(() => {
+    if (scrollY === maxScrollY) setIsComplete(true)
+  }, [])
+
+  useEffect(() => {
+    if (window.scrollY > 50) setShow(true)
+    else setShow(false)
+  })
   return (
     <SectionContainer>
       <BlogSEO
@@ -49,7 +82,18 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
         author={author.twitter.replace('https://twitter.com/', '@')}
         url={`${siteMetadata.siteUrl}/`}
       />
-      <article className="w-full">
+      <article className="relative w-full">
+        {show && (
+          <div className="fixed top-[80px] left-0 right-0 z-[100] h-1 w-full bg-gray-200 dark:bg-gray-800">
+            <div
+              className="h-1 bg-primary"
+              style={{
+                width: Math.round((100 * scrollY) / maxScrollY) + '%',
+                transition: 'all 0.2s linear',
+              }}
+            ></div>
+          </div>
+        )}
         <div className="w-full xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
           <header className="pt-6 xl:pb-6">
             <Link
@@ -59,7 +103,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               &larr; Back to the blog
             </Link>
             <div className="flex flex-col items-center justify-center">
-              <time dateTime={date}>
+              <time dateTime={date} className="text-sm text-gray-600">
                 {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
               </time>
 
@@ -89,7 +133,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   {next ? (
                     <div>
                       <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                        Next Article
+                        Siguiente
                       </h2>
                       <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                         <Link href={`/blog/${next.slug}`}>{next.title}</Link>
