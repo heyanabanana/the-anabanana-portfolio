@@ -6,7 +6,7 @@ import Pagination from '@/shared/components/ui/sections/Pagination'
 import formatDate from '@/shared/lib/utils/formatDate'
 
 import { NotesFrontMatter } from '@/shared/models'
-import { categories } from '@/data/notes/categories'
+import { categories } from '@/data/categories'
 import { NoteCardFeat, NoteCard } from '@/shared/components/ui/cards'
 
 interface Props {

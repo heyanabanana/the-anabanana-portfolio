@@ -3,7 +3,7 @@ import { PageSEO } from '@/shared/components/SEO'
 import Tag from '@/shared/components/ui/lib/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { kebabCase } from '@/shared/lib/utils/kebabCase'
-import { categories } from '@/data/notes/categories'
+import { categories } from '@/data/categories'
 import Image from 'next/image'
 
 export default function Apuntes() {

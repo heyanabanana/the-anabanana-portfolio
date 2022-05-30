@@ -7,17 +7,37 @@
       <language>es-us</language>
       <managingEditor>hola@heyanabanana.es (Ana Fernández)</managingEditor>
       <webMaster>hola@heyanabanana.es (Ana Fernández)</webMaster>
-      <lastBuildDate>Mon, 30 May 2022 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Fri, 27 May 2022 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://heyanabanana.es/projects" rel="self" type="application/rss+xml"/>
       
   <item>
-    <guid>https://heyanabanana.es/proyectos/website-personal</guid>
-    <title>Website personal</title>
-    <link>https://heyanabanana.es/notes/website-personal</link>
-    undefined
-    <pubDate>Mon, 30 May 2022 00:00:00 GMT</pubDate>
+    <guid>https://heyanabanana.es/proyectos/html/etiquedas-texto</guid>
+    <title>Etiquetas de texto</title>
+    <link>https://heyanabanana.es/notes/html/etiquedas-texto</link>
+    <description>Diferentes etiquetas de texto para los documentos HTML</description>
+    <pubDate>Fri, 27 May 2022 00:00:00 GMT</pubDate>
     <author>hola@heyanabanana.es (Ana Fernández)</author>
-    <category>next-js</category><category>tailwind-css</category><category>frontend</category><category>react-js</category>
+    <category>html-5</category>
+  </item>
+
+  <item>
+    <guid>https://heyanabanana.es/proyectos/html/elementos-estructurales</guid>
+    <title>Elementos estructurales</title>
+    <link>https://heyanabanana.es/notes/html/elementos-estructurales</link>
+    <description>Elementos estructurales que componen un documento HTML</description>
+    <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
+    <author>hola@heyanabanana.es (Ana Fernández)</author>
+    <category>html-5</category>
+  </item>
+
+  <item>
+    <guid>https://heyanabanana.es/proyectos/html/introduccion-a-html</guid>
+    <title>Introducción a HTML5</title>
+    <link>https://heyanabanana.es/notes/html/introduccion-a-html</link>
+    <description>HTML significa Lenguaje de Marcado de Hiper Texto (Hiper Text Markup Language), es decir, es un lenguaje de marcado, no de programación</description>
+    <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
+    <author>hola@heyanabanana.es (Ana Fernández)</author>
+    <category>html-5</category>
   </item>
 
     </channel>
