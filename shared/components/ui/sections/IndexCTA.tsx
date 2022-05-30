@@ -41,7 +41,7 @@ export const IndexCTA = () => {
             href="https://open-bootcamp.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-1 font-semibold text-teal-400 dark:text-teal-200"
+            className="mx-1 font-semibold text-teal-500 dark:text-teal-200"
           >
             OpenBootcamp.
           </a>
@@ -49,13 +49,13 @@ export const IndexCTA = () => {
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link href="/proyectos" passHref>
-            <button className="block w-full rounded bg-primary px-12 py-3 text-sm font-medium text-white shadow hover:bg-primary-600 focus:outline-none focus:ring active:bg-red-500 sm:w-auto">
+            <button className="block w-full rounded bg-primary-400 px-12 py-3 text-sm font-medium text-white shadow hover:bg-primary-600 focus:outline-none focus:ring active:bg-red-500 sm:w-auto">
               Ver proyectos
             </button>
           </Link>
 
           <Link passHref href="/sobre-mi">
-            <button className="block w-full rounded border border-primary-300 px-12 py-3 text-sm font-medium text-primary hover:text-primary-600 focus:outline-none focus:ring active:text-primary-500 dark:text-primary-300 sm:w-auto">
+            <button className="block w-full rounded border border-primary-300 px-12 py-3 text-sm font-medium text-primary-400 hover:text-primary-600 focus:outline-none focus:ring active:text-primary-500 dark:text-primary-300 sm:w-auto">
               Sobre mi
             </button>
           </Link>

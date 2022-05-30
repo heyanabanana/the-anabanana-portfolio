@@ -21,7 +21,7 @@ const siteMetadata = {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
     // supports plausible, simpleAnalytics, umami or googleAnalytics
-    googleAnalyticsId: 'G-2EKE1PGX9N', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: ENV.GOOGLE_ANALYTICS_ID, // e.g. UA-000000-2 or G-XXXXXXX
   },
 }
 

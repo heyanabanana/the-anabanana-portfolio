@@ -5,7 +5,7 @@ import Link from '@/shared/components/ui/lib/Link'
 
 export const ProjectCard = ({ project }: { project: ProjectsFrontMatter }) => {
   return (
-    <Link key={project.slug} href={`/proyectos/${project.slug}`}>
+    <Link key={project.slug} href={`/proyectos/${project.slug}`} aria-label={`Ir a ${project.title}`} >
       <div
         className="flex h-80 w-60 transform flex-col justify-end gap-px overflow-hidden rounded-lg bg-cover p-2 shadow-xl transition duration-500 hover:scale-105"
         style={{

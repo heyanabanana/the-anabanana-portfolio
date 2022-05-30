@@ -12,6 +12,8 @@ import { ProjectCard } from '../shared/components/ui/cards/ProjectCard'
 
 const MAX_DISPLAY = 5
 
+
+
 export const getStaticProps: GetStaticProps<{
   posts: NotesFrontMatter[]
   projects: PostFrontMatter[]

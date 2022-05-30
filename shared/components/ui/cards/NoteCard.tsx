@@ -6,10 +6,10 @@ import { BiLogIn } from 'react-icons/bi'
 
 export const NoteCard = ({ note }: { note: NotesFrontMatter }) => {
   return (
-<article key={note.slug} className="gap-4 py-6">
+<article className="gap-4 py-6">
                 <div className="align-center flex w-full flex-col justify-between md:flex-row">
                   <h3 className="text-2xl font-medium leading-8 tracking-tight text-gray-900 dark:text-gray-100">
-                    <Link href={`/apuntes/${note.slug}`} className="text-gray-900 dark:text-gray-100">
+                    <Link aria-label={`Ir a ${note.title}`} href={`/apuntes/${note.slug}`} className="text-gray-900 dark:text-gray-100">
                       {note.title}
                     </Link>
                   </h3>

@@ -9,7 +9,10 @@ export const MobileNav = () => {
     <Menu as="div" className="relative text-left sm:hidden">
       {({ open }) => (
         <>
-          <Menu.Button className="flex w-full justify-center text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <Menu.Button
+            aria-label="Abrir menú"
+            className="flex w-full justify-center text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          >
             <HamIcon isOpen={open} />
           </Menu.Button>
           <Transition

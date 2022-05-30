@@ -10,7 +10,7 @@ export const Header = () => {
           <div className="w-7 cursor-pointer select-none items-center  fill-primary-400 text-primary-400  dark:fill-primary-200 dark:text-primary-200">
             <svg
               width="166"
-              height="auto"
+              height="100%"
               viewBox="0 0 2278 244"
               fill="current"
               xmlns="http://www.w3.org/2000/svg"
