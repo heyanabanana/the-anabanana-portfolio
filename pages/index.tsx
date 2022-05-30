@@ -1,6 +1,5 @@
 import Link from '@/shared/components/ui/lib/Link'
 import { PageSEO } from '@/shared/components/SEO'
-import Tag from '@/shared/components/ui/lib/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/shared/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
@@ -33,13 +32,13 @@ export default function Home({ posts, projects }: InferGetStaticPropsType<typeof
           <IndexCTA />
           <Link
             className="flex h-12 w-12 items-center justify-center rounded-full border border-primary text-primary hover:bg-primary/20 focus:outline-none focus:ring dark:border-primary-300 dark:text-primary-300 md:h-16 md:w-16"
-            href="#projects_feat"
+            href="#proyectos-destacados"
           >
             <span className="sr-only"> Ver más </span>
             <BiDownArrowAlt className="h-8 w-8 md:h-10 md:w-10" />
           </Link>
         </div>
-        <section id="projects_feat" className="min-h-[calc(100vh-190px)]">
+        <section id="proyectos-destacados" className="min-h-[calc(100vh-190px)]">
           <div className="flex w-full flex-col items-start justify-between pt-20 md:flex-row md:items-center">
             <h2 className="flex items-center gap-2  text-xl font-bold leading-8 tracking-tight sm:text-2xl md:text-3xl">
               🖍 Escribo sobre las cosas que aprendo

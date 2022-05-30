@@ -28,7 +28,6 @@ export async function getStaticPaths() {
 // @ts-ignore
 export const getStaticProps: GetStaticProps<{
   post: { mdxSource: string; toc: Toc; frontMatter: PostFrontMatter }
-  authorDetails: AuthorFrontMatter[]
   prev?: { slug: string; title: string }
   next?: { slug: string; title: string }
 }> = async ({ params }) => {

@@ -108,7 +108,6 @@ interface BlogSeoProps extends PostFrontMatter {
 }
 
 export const BlogSEO = ({
-  authorDetails,
   title,
   summary,
   date,

@@ -28,25 +28,16 @@ export async function getStaticPaths() {
 // @ts-ignore
 export const getStaticProps: GetStaticProps<{
   post: { mdxSource: string; toc: Toc; frontMatter: PostFrontMatter }
-  authorDetails: AuthorFrontMatter[]
   prev?: { slug: string; title: string }
   next?: { slug: string; title: string }
 }> = async ({ params }) => {
-  const slug = (params.slug as string[]).join('/')
+  const slug = (params?.slug as string[]).join('/')
   const allPosts = await getAllFilesFrontMatter('projects')
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === slug)
   const prev: { slug: string; title: string } = allPosts[postIndex + 1] || null
   const next: { slug: string; title: string } = allPosts[postIndex - 1] || null
   const post = await getFileBySlug<PostFrontMatter>('projects', slug)
-  // @ts-ignore
-  const authorList = post.frontMatter.authors || ['default']
-  const authorPromise = authorList.map(async (author) => {
-    const authorResults = await getFileBySlug<AuthorFrontMatter>('authors', [author])
-    return authorResults.frontMatter
-  })
-  const authorDetails = await Promise.all(authorPromise)
-
-  // rss
+ // rss
   if (allPosts.length > 0) {
     const rss = generateRss(allPosts)
     fs.writeFileSync('./public/feed.xml', rss)
@@ -55,7 +46,6 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       post,
-      authorDetails,
       prev,
       next,
     },
@@ -64,7 +54,6 @@ export const getStaticProps: GetStaticProps<{
 
 export default function Projects({
   post,
-  authorDetails,
   prev,
   next,
 }: InferGetStaticPropsType<typeof getStaticProps>) {

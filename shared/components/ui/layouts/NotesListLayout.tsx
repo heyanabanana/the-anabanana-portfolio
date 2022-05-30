@@ -7,6 +7,7 @@ import formatDate from '@/shared/lib/utils/formatDate'
 
 import { NotesFrontMatter } from '@/shared/models'
 import { categories } from '@/data/notes/categories'
+import { NoteCardFeat, NoteCard } from '@/shared/components/ui/cards'
 
 interface Props {
   posts: NotesFrontMatter[]
@@ -38,13 +39,13 @@ export default function NotesListLayout({
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex w-full justify-between pt-6 pb-6">
-        <h1 className="flex items-center gap-4 text-5xl font-extrabold leading-9 tracking-tight   md:leading-14">
+      <div className="flex w-full justify-between pt-6 pb-6 flex-col md:flex-row">
+        <h1 className="flex items-center gap-4 text-5xl font-extrabold leading-9 tracking-tight md:leading-14">
           {categories?.find((c: any) => c?.name.toLowerCase() === title.toLowerCase())?.icon}{' '}
           {title}
         </h1>
 
-        <div className="relative max-w-lg">
+        <div className="relative max-w-lg pt-2 md:pt-0">
           <input
             aria-label="Buscar artículos"
             type="text"
@@ -74,37 +75,7 @@ export default function NotesListLayout({
         </h2>
         <section className="divide-y divide-gray-300 dark:divide-gray-700">
           {featPost?.map((frontMatter: NotesFrontMatter) => {
-            const { slug, date, title, summary } = frontMatter
-            return (
-              <article
-                key={slug}
-                className="my-6 gap-4 rounded-xl border border-primary-200  p-8 py-6 shadow-lg transition hover:border-primary-500/20 hover:shadow-primary-400/10 dark:border-primary-700"
-              >
-                <div className="align-center flex w-full justify-between">
-                  <h3 className="text-2xl font-medium leading-8 tracking-tight  ">
-                    <Link
-                      href={`/apuntes/${slug}`}
-                      className="text-gray-900 hover:text-primary dark:text-gray-100"
-                    >
-                      {title}
-                    </Link>
-                  </h3>
-                  <time className="text-sm text-gray-500 dark:text-gray-400" dateTime={date}>
-                    {formatDate(date)}
-                  </time>
-                </div>
-                <div className="align-center flex w-full justify-between">
-                  <div className="prose max-w-none text-gray-500 dark:text-gray-400">{summary}</div>{' '}
-                  <Link
-                    href={`/apuntes/${slug}`}
-                    className="text-gray-900 dark:text-gray-100"
-                    passHref
-                  >
-                    <BiLogIn className="h-6 w-6 cursor-pointer text-primary" />
-                  </Link>
-                </div>
-              </article>
-            )
+            return <NoteCardFeat key={frontMatter.slug} note={frontMatter} />
           })}
         </section>
       </div>
@@ -117,28 +88,7 @@ export default function NotesListLayout({
           {displayPosts.map((frontMatter: NotesFrontMatter) => {
             const { slug, date, title, summary } = frontMatter
             return (
-              <article key={slug} className="gap-4 py-6">
-                <div className="align-center flex w-full justify-between">
-                  <h3 className="text-2xl font-medium leading-8 tracking-tight text-gray-900 dark:text-gray-100">
-                    <Link href={`/apuntes/${slug}`} className="text-gray-900 dark:text-gray-100">
-                      {title}
-                    </Link>
-                  </h3>
-                  <time className="text-sm text-gray-500 dark:text-gray-400" dateTime={date}>
-                    {formatDate(date)}
-                  </time>
-                </div>
-                <div className="align-center flex w-full justify-between">
-                  <div className="prose max-w-none text-gray-500 dark:text-gray-400">{summary}</div>{' '}
-                  <Link
-                    href={`/apuntes/${slug}`}
-                    className="text-gray-900 dark:text-gray-100"
-                    passHref
-                  >
-                    <BiLogIn className="h-6 w-6 cursor-pointer text-primary" />
-                  </Link>
-                </div>
-              </article>
+              <NoteCard key={frontMatter.slug} note={frontMatter} />
             )
           })}
         </section>

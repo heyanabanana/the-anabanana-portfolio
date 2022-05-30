@@ -43,7 +43,6 @@ export default function ProyectListLayout({
 
   return (
     <>
-      <div className="sticky top-0 h-2 w-screen bg-white">HOLA</div>
       <div className="space-y-6">
         <div className="flex w-full flex-col items-center justify-center gap-4 pt-6 md:flex-row md:justify-between">
           <h1 className="flex items-center gap-4 text-3xl font-extrabold leading-9 tracking-tight sm:text-3xl md:items-center md:text-4xl">
@@ -75,7 +74,7 @@ export default function ProyectListLayout({
           </div>
         </div>
         {asPath === '/proyectos' && (
-          <div className="flex w-full items-center justify-center gap-3 pb-6">
+          <div className="flex w-full items-center justify-center gap-3 pb-6 flex-wrap">
             {tagsFiltered.map((t: any) => (
               <Tag key={t} text={t.split('-').join('\xa0')} />
             ))}

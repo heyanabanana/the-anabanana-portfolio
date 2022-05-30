@@ -7,6 +7,8 @@ export const author: AuthorFrontMatter = {
   github: 'https://github.com/heyanabanana',
   twitter: 'https://twitter.com/hey_anabanana',
   linkedin: 'https://www.linkedin.com/in/anafernandezvaldes/',
+  instagram: 'https://www.instagram.com/hey.anabanana/',
+
   website: 'https://heyanabanana.es',
 
   description: [

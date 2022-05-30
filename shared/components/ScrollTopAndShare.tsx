@@ -3,7 +3,7 @@ import { BiCheck } from 'react-icons/bi'
 import { ShareOnTwitter } from '@/shared/components/ui/lib/ShareOnTwitter'
 import { ShareOnLinkedin } from '@/shared/components/ui/lib/ShareOnLinkedin'
 
-const ScrollTopAndComment = ({
+const ScrollTopAndShare = ({
   type,
   slug,
   text,
@@ -88,4 +88,4 @@ const ScrollTopAndComment = ({
     </div>
   )
 }
-export default ScrollTopAndComment
+export default ScrollTopAndShare

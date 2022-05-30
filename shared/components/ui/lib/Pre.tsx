@@ -67,7 +67,7 @@ const Pre = ({ children }: Props) => {
         </button>
       )}
 
-      <pre className="bg-black">{children}</pre>
+      <pre className=" bg-black">{children}</pre>
     </div>
   )
 }

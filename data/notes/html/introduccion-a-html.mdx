@@ -8,7 +8,21 @@ feat: true
 category: ['html']
 ---
 
-## Elementos estructurales
+# Introducción a HTML 5
+<section>
+HTML es un lenguaje de marcado compuesto de elementos que se utilizan para **darles significado** a las partes de una página web.
+
+HTML sirve para indicarle al navegador **qué se muestra** en una página web, pero no debemos usarlo para definir como debe verse ese contenido (si el texto es rojo, si tiene un fontsize predeterminado...). Para ello usaremos CSS.
+
+Estructura básica de un documento .html
+
+`<!DOCTYPE html>` -> Le indicamos al navegador el tipo de documento que va a mostrar.
+
+`<html></html>` -> Iniciamos el documento HTML
+
+`<head></head>` -> Información para el navegador (titulo, descripción, favicon...)
+
+`<body></body>` -> Contenido de la web
 
 ```html
 <!DOCTYPE html>
@@ -33,44 +47,4 @@ category: ['html']
   </body>
 </html>
 ```
-
-### Elementos del cuerpo
-
-```html
-<body>
-  <!–– Contenido de la web -->
-
-  <div></div>
-  <!-- División genérica -->
-
-  <main></main>
-  <!-- División contenido principal -->
-
-  <nav></nav>
-  <!-- Navegación -->
-
-  <section></section>
-  <!-- Sección genérica -->
-
-  <aside></aside>
-  <!--Información relacionada con el contenido principal -->
-
-  <article></article>
-  <!-- Artículo independiente -->
-
-  <header></header>
-  <!-- Cabecera del cuerpo o de secciones -->
-
-  <footer></footer>
-  <!-- Pie del cuerpo o de secciones -->
-</body>
-```
-
-### Atributos globales
-
-```html
-id = "identificador"
-<!-- Único -->
-class= "identificador"
-<!-- Grupo de elementos -->
-```
+</section>

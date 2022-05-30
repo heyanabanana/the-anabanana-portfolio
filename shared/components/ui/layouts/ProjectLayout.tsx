@@ -7,8 +7,7 @@ import { BlogSEO } from '@/shared/components/SEO'
 import Image from '@/shared/components/ui/lib/Image'
 import Tag from '@/shared/components/ui/lib/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import Comments from '@/shared/components/comments'
-import ScrollTopAndComment from '@/shared/components/ScrollTopAndComment'
+import ScrollTopAndShare from '@/shared/components/ScrollTopAndShare'
 import { ReactNode } from 'react'
 import { PostFrontMatter } from '@/shared/models/PostFrontMatter'
 import { AuthorFrontMatter } from '@/shared/models/AuthorFrontMatter'
@@ -43,27 +42,23 @@ export default function ProjectLayout({ frontMatter, next, prev, children }: Pro
         authorDetails={author}
         {...frontMatter}
       />
-      <ScrollTopAndComment
+      <ScrollTopAndShare
         type="project"
         slug={slug}
-        text="Acabo de leer esto de "
-        author={author.twitter.replace('https://twitter.com/', '@')}
+        text="Acabo de ver este proyecto de "
+        author={author?.twitter?.replace('https://twitter.com/', '@') || ''}
         url={`${siteMetadata.siteUrl}/`}
       />
       <article className="w-full">
         <div className="w-full xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
           <header className="pt-6 xl:pb-6">
             <Link
-              href="/blog"
+              href="/proyectos"
               className="text-primary hover:text-primary-600 dark:hover:text-primary-400"
             >
               &larr; Volver a los proyectos
             </Link>
-            <div className="flex flex-col items-center justify-center">
-              <time dateTime={date}>
-                {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
-              </time>
-
+            <div className="flex flex-col items-center justify-center gap-2">
               <PageTitle>{title}</PageTitle>
               {tags && (
                 <div className="flex flex-wrap items-center gap-2">
@@ -106,22 +101,21 @@ export default function ProjectLayout({ frontMatter, next, prev, children }: Pro
           <div className="flex w-full flex-col gap-6 pb-8 xl:flex-row">
             {/* CONTENT COL */}
 
-            <section className="flex flex-col divide-y divide-gray-200 dark:divide-gray-700">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
-              <div className="flex items-center justify-between pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
+            <section className="flex w-full flex-col items-center divide-y divide-gray-200 dark:divide-gray-700">
+              <div className="prose w-full  max-w-3xl pt-10 pb-8 dark:prose-dark">{children}</div>
+              <div className="flex w-full flex-col items-center justify-between gap-2 pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300 md:flex-row">
                 <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>{' '}
                 <span className="flex gap-2">
                   <ShareOnTwitter
                     type="project"
                     slug={slug}
-                    text="Acabo de leer esto de "
-                    author={author.twitter.replace('https://twitter.com/', '@')}
+                    text="Acabo de ver este proyecto de "
+                    author={author?.twitter?.replace('https://twitter.com/', '@') || ''}
                     url={`${siteMetadata.siteUrl}/`}
                   />
                   <ShareOnLinkedin type="project" slug={slug} url={`${siteMetadata.siteUrl}/`} />
                 </span>
               </div>
-              <Comments frontMatter={frontMatter} />
             </section>
           </div>
         </div>

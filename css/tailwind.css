@@ -40,3 +40,7 @@ input:-webkit-autofill:focus {
 .dark .dark\:prose-dark :where(code):not(:where([class~='not-prose'] *)) {
   background: #232323 !important;
 }
+
+.prose :where(code):not(:where([class~='not-prose'] *)) {
+  color: #e98183;
+}

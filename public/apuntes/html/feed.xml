@@ -1,20 +1,30 @@
 
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-      <title>Porfolio &amp; Blog</title>
+      <title>🍌 Hey!</title>
       <link>https://heyanabanana.es/blog</link>
-      <description>Portfolio y blog creado con TailwindCSS y NextJS</description>
+      <description>Portfolio y apuntes sobre desarrollo frontend y diseño</description>
       <language>es-us</language>
       <managingEditor>hola@heyanabanana.es (Ana Fernández)</managingEditor>
       <webMaster>hola@heyanabanana.es (Ana Fernández)</webMaster>
-      <lastBuildDate>Thu, 26 May 2022 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Fri, 27 May 2022 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://heyanabanana.es/apuntes/html/feed.xml" rel="self" type="application/rss+xml"/>
       
+  <item>
+    <guid>https://heyanabanana.es/blog/html/etiquedas-texto</guid>
+    <title>Etiquetas de texto</title>
+    <link>https://heyanabanana.es/blog/html/etiquedas-texto</link>
+    <description>Diferentes etiquetas de texto para los documentos HTML</description>
+    <pubDate>Fri, 27 May 2022 00:00:00 GMT</pubDate>
+    <author>hola@heyanabanana.es (Ana Fernández)</author>
+    <category>html-5</category>
+  </item>
+
   <item>
     <guid>https://heyanabanana.es/blog/html/elementos-estructurales</guid>
     <title>Elementos estructurales</title>
     <link>https://heyanabanana.es/blog/html/elementos-estructurales</link>
-    <description>Elementos estructurales</description>
+    <description>Elementos estructurales que componen un documento HTML</description>
     <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
     <author>hola@heyanabanana.es (Ana Fernández)</author>
     <category>html-5</category>

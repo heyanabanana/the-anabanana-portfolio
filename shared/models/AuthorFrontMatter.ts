@@ -3,10 +3,12 @@ export type AuthorFrontMatter = {
   name: string
   occupation: string
 
-  email: string
-  twitter: string
-  linkedin: string
-  github: string
+  email?: string
+  twitter?: string
+  linkedin?: string
+  github?: string
+  instagram?: string
+
   website: string
 
   description: string[]
