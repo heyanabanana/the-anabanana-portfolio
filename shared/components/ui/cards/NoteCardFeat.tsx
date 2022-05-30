@@ -15,7 +15,7 @@ export const NoteCardFeat = ({ note }: { note: NotesFrontMatter }) => {
           <Link
             href={`/apuntes/${note.slug}`}
             className="text-gray-900 hover:text-primary dark:text-gray-100"
-            aria-label={`Ir a ${note.title}`} 
+            aria-label={`Ir a ${note.title}`}
           >
             {note.title}
           </Link>
@@ -26,7 +26,10 @@ export const NoteCardFeat = ({ note }: { note: NotesFrontMatter }) => {
       </div>
       <div className="align-center flex w-full flex-col justify-between md:flex-row">
         <div className="prose max-w-none text-gray-500 dark:text-gray-400 ">{note.summary}</div>{' '}
-        <Link href={`/apuntes/${note.slug}`} className="text-gray-900 dark:text-gray-100 ml-auto" aria-label={`Ir a ${note.title}`} >
+        <Link
+          href={`/apuntes/${note.slug}`}
+          className="ml-auto text-gray-900 dark:text-gray-100"
+        >
           <BiLogIn className="h-6 w-6 cursor-pointer text-primary" />
         </Link>
       </div>

@@ -12,7 +12,7 @@ const CustomLink = ({
   if (isInternalLink) {
     return (
       <Link href={href}>
-        <a {...rest} />
+        <a {...rest} aria-label="href"/>
       </Link>
     )
   }

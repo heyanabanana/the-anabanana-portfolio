@@ -6,7 +6,10 @@ export const HamIcon = ({ isOpen }: { isOpen: boolean }) => {
   }`
 
   return (
-    <button className="group flex h-9 w-8 flex-col items-center justify-center rounded ">
+    <button
+      className="group flex h-9 w-8 flex-col items-center justify-center rounded "
+      aria-label="Abrir menú"
+    >
       <div className={`${hamLine} ${isOpen ? 'translate-y-3 rotate-45' : ''}`} />
       <div className={`${hamLine} ${isOpen ? 'opacity-0' : ''}`} />
       <div className={`${hamLine} ${isOpen ? '-translate-y-3 -rotate-45 ' : ''}`} />
